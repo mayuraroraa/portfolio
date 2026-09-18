@@ -7,10 +7,10 @@ const Navbar = () => {
   const location = useLocation();
 
   const navLinks = [
+    { name: 'Home', path: '/' },
     { name: 'Work', path: '/work', count: '4' },
     { name: 'Services', path: '/services', count: '2' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact Us', path: '/contact' },
+    { name: 'About', path: '/about' }
   ];
 
   return (
