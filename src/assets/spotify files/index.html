@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone - Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <nav class="navbar spotify-navbar">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-nowrap">
+            
+            <div class="nav-left d-flex align-items-center gap-2">
+                <div class="nav-logo d-none d-sm-block">
+                    <a href="index.html" class="text-white"><i class="fa-brands fa-spotify logo-icon"></i></a>
+                </div>
+                <button type="button" class="nav-circle-btn" onclick="window.location.href='index.html'">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+                <div class="spotify-search-container d-none d-md-flex align-items-center">
+                    <span class="search-icon-left"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input class="form-control spotify-input" type="search" placeholder="What do you want to play?" aria-label="Search" />
+                    <button type="button" class="search-icon-right"><i class="fa-solid fa-table-cells-large"></i></button>
+                </div>
+            </div>
+
+            <div class="nav-right d-flex align-items-center gap-2">
+                <button type="button" class="nav-text-btn d-none d-lg-block">Premium</button>
+                <button type="button" class="nav-text-btn d-none d-lg-block">Support</button>
+                <button type="button" class="nav-text-btn d-none d-lg-block">Download</button>
+                <span class="nav-divider d-none d-lg-block">|</span>
+                <button type="button" class="nav-text-btn install-btn d-none d-sm-block">
+                    <i class="fa-regular fa-circle-down me-1"></i> Install App
+                </button>
+                <button type="button" class="btn-signup text-nowrap"><a href="spotify.html">Sign up</a></button>
+                <button type="button" class="btn-login text-nowrap"><a href="spotify.html">Log in</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row m-0 px-2 g-2 spotify-main-layout">
+        
+        <div class="col-md-4 col-lg-3 d-none d-md-flex h-100">
+            <aside class="sidebar d-flex flex-column w-100 h-100">
+                <header class="library-header d-flex justify-content-between align-items-center px-4 py-3">
+                    <a href="index.html" class="library-title text-decoration-none d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-book-open fs-4"></i>
+                        <span class="fw-bold fs-6">Your Library</span>
+                    </a>
+                    <div class="btn-group">
+                        <button type="button" class="btn create-icon-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-plus me-1"></i> Create
+                        </button>
+                        <ul class="dropdown-menu dropdown-list">
+                            <li><a class="dropdown-item" href="#"><strong class="d-block">Playlist</strong><span>Create a playlist</span></a></li>
+                            <li><a class="dropdown-item" href="#"><strong class="d-block">Blend</strong><span>Combine tastes</span></a></li>
+                            <li><hr class="dropdown-divider border-secondary"></li>
+                            <li><a class="dropdown-item" href="#"><strong class="d-block">Folder</strong><span>Organise your playlists</span></a></li>
+                        </ul>
+                    </div>
+                </header>
+
+                <div class="sidebar-content overflow-y-auto px-2 mt-2 flex-grow-1">
+                    <div class="action-box">
+                        <h3 class="fw-bold">Create your first playlist</h3>
+                        <p class="mb-3">It's easy, we'll help you</p>
+                        <button class="btn pill-btn text-black fw-bold rounded-pill">Create playlist</button>
+                    </div>
+                    <div class="action-box mt-4">
+                        <h3 class="fw-bold">Let's find some podcasts to follow</h3>
+                        <p class="mb-3">We'll keep you updated on new episodes</p>
+                        <button class="btn pill-btn text-black fw-bold rounded-pill">Browse podcasts</button>
+                    </div>
+                </div>
+
+                <div class="sidebar-footer px-4 py-4 mt-auto">
+                    <div class="d-flex flex-wrap gap-3 mb-4 footer-links">
+                        <a href="#">Legal</a><a href="#">Safety & Privacy Center</a><a href="#">Privacy Policy</a>
+                        <a href="#">Cookies</a><a href="#">About Ads</a><a href="#">Accessibility</a>
+                    </div>
+                    <button class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 lang-btn">
+                        <i class="fa-solid fa-globe"></i> English
+                    </button>
+                </div>
+            </aside>
+        </div>
+
+        <div class="col-12 col-md-8 col-lg-9 h-100">
+            <main class="main-content-area w-100 h-100 p-4">
+                
+                <h2 class="text-white fw-bold"><a href="#">Trending songs</a></h2>
+                <div class="spotify-card-container d-flex gap-4 mt-4">
+                    
+                    <div class="spotify-card">
+                        <a href="album.html?id=barsaat" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/Screenshot 1.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Barsaat</h4>
+                                <p class="card-subtitle">Banjaare, Roni</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=kalyani" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/Screenshot 2.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">KALYANI</h4>
+                                <p class="card-subtitle">ARJN,KDS,FIFTY4,Shreya Ghoshal</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=her" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/Screenshot 3.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Her</h4>
+                                <p class="card-subtitle">Shubh</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=deewane" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/Screenshot 4.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Deewane</h4>
+                                <p class="card-subtitle">Navaan Sandhu,Bir,Daaku</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=pichetere" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/Screenshot 5.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Piche Tere</h4>
+                                <p class="card-subtitle">Kunwaar,Dishant</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <h2 class="text-white fw-bold mt-5"><a href="#">Popular Artists</a></h2>
+                <div class="spotify-card-container d-flex gap-4 mt-4">
+                    
+                    <div class="spotify-card">
+                        <a href="artist.html?id=pritam" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper card-image-artist-wrapper">
+                                <img src="images/artist 1.png" alt="Artist Cover" class="card-image-2">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Pritam</h4>
+                                <p class="card-subtitle">Artist</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="artist.html?id=arrahman" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper card-image-artist-wrapper">
+                                <img src="images/artist 2.png" alt="Artist Cover" class="card-image-2">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">A.R.Rahman</h4>
+                                <p class="card-subtitle">Artist</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="artist.html?id=arijit" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper card-image-artist-wrapper">
+                                <img src="images/artist 3.png" alt="Artist Cover" class="card-image-2">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Arijit Singh</h4>
+                                <p class="card-subtitle">Artist</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="artist.html?id=sachinjigar" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper card-image-artist-wrapper">
+                                <img src="images/artist 4.png" alt="Artist Cover" class="card-image-2">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Sachin-Jigar</h4>
+                                <p class="card-subtitle">Artist</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="artist.html?id=honeysingh" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper card-image-artist-wrapper">
+                                <img src="images/artist 5.png" alt="Artist Cover" class="card-image-2">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Yo Yo Honey Singh</h4>
+                                <p class="card-subtitle">Artist</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <h2 class="text-white fw-bold mt-5"><a href="#">Popular Albums and Singles</a></h2>
+                <div class="spotify-card-container d-flex gap-4 mt-4">
+                    
+                    <div class="spotify-card">
+                        <a href="album.html?id=sicario" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/album 1.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Sicario</h4>
+                                <p class="card-subtitle">Shubh</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=glory" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/album 2.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">GLORY</h4>
+                                <p class="card-subtitle">Yo Yo Honey Singh</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=younggoat" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/album 3.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Young G.O.A.T</h4>
+                                <p class="card-subtitle">Chemma Y, Gur Sidhu</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=jotum" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/album 4.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Jo Tum Mere Ho</h4>
+                                <p class="card-subtitle">Anuv Jain</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=withoutprejudice" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/album 5.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">WITHOUT PREJUDICE</h4>
+                                <p class="card-subtitle">Guru Randhawa</p>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <h2 class="text-white fw-bold mt-5"><a href="#">Featured Chart</a></h2>
+                <div class="spotify-card-container d-flex gap-4 mt-4">
+                    
+                    <div class="spotify-card">
+                        <a href="album.html?id=chart1" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/chart 1.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Top Songs Global</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=chart2" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/chart 2.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Top Songs India</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=chart3" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/chart 3.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Top 50 Global</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="spotify-card">
+                        <a href="album.html?id=chart4" class="text-decoration-none text-white d-block h-100">
+                            <div class="card-image-wrapper">
+                                <img src="images/chart 4.png" alt="Album Cover">
+                                <button class="card-play-btn shadow" onclick="event.preventDefault();"><i class="fa-solid fa-play"></i></button>
+                            </div>
+                            <div class="card-text-content">
+                                <h4 class="card-title-main">Top 50 India</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <footer class="spotify-main-footer mt-5 pt-5 pb-4">
+                    <div class="d-flex flex-wrap justify-content-between gap-4">
+                        <div class="footer-links-container d-flex flex-wrap gap-5">
+                            <div class="footer-column">
+                                <h6 class="text-white fw-bold mb-3">Company</h6>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">For the Record</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-column">
+                                <h6 class="text-white fw-bold mb-3">Communities</h6>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">For Artists</a></li>
+                                    <li><a href="#">Developers</a></li>
+                                    <li><a href="#">Advertising</a></li>
+                                    <li><a href="#">Investors</a></li>
+                                    <li><a href="#">Vendors</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-column">
+                                <h6 class="text-white fw-bold mb-3">Useful links</h6>
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Support</a></li>
+                                    <li><a href="#">Free Mobile App</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="footer-socials d-flex gap-3">
+                            <a href="https://www.instagram.com/spotify" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://x.com/spotify" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.facebook.com/Spotify" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                    <hr class="footer-divider my-4">
+                    <div class="d-flex justify-content-end pb-3">
+                        <span class="copyright-text">&copy; 2026 Spotify AB</span>
+                    </div>
+                </footer>
+
+            </main>
+        </div>
+    </div>
+    <!-- ======================= -->
+    <!-- SIGN UP PREVIEW BANNER  -->
+    <!-- ======================= -->
+    <!-- This sits OUTSIDE the grid layout so it sticks to the screen -->
+    <div class="preview-banner d-flex justify-content-between align-items-center">
+        <div class="preview-text">
+            <p class="preview-title mb-1">Preview of Spotify</p>
+            <p class="preview-desc mb-0">Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</p>
+        </div>
+        <button class="btn btn-light rounded-pill fw-bold px-4 py-2 text-black fs-6">Sign up for free</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

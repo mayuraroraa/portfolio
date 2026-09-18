@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album - Spotify Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- TOP NAVBAR (Identical to index) -->
+    <nav class="navbar spotify-navbar">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-nowrap">
+            <div class="nav-left d-flex align-items-center gap-2">
+                <div class="nav-logo d-none d-sm-block">
+                    <a href="index.html" class="text-white"><i class="fa-brands fa-spotify logo-icon"></i></a>
+                </div>
+                <button type="button" class="nav-circle-btn" onclick="window.location.href='index.html'">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+                <div class="spotify-search-container d-none d-md-flex align-items-center">
+                    <span class="search-icon-left"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input class="form-control spotify-input" type="search" placeholder="What do you want to play?" />
+                    <button type="button" class="search-icon-right"><i class="fa-solid fa-table-cells-large"></i></button>
+                </div>
+            </div>
+            <div class="nav-right d-flex align-items-center gap-2">
+                <button type="button" class="nav-text-btn d-none d-lg-block">Premium</button>
+                <button type="button" class="nav-text-btn d-none d-lg-block">Support</button>
+                <button type="button" class="nav-text-btn d-none d-lg-block">Download</button>
+                <span class="nav-divider d-none d-lg-block">|</span>
+                <button type="button" class="nav-text-btn install-btn d-none d-sm-block"><i class="fa-regular fa-circle-down me-1"></i> Install App</button>
+                <button type="button" class="btn-signup text-nowrap"><a id="sigining" href="spotify.html">Sign up</a></button>
+                <button type="button" class="btn-login text-nowrap"><a href="spotify.html">Log in</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN GRID LAYOUT -->
+    <div class="row m-0 px-2 g-2 spotify-main-layout">
+        
+        <!-- LEFT SIDEBAR (Identical to index) -->
+        <div class="col-md-4 col-lg-3 d-none d-md-flex h-100">
+            <aside class="sidebar d-flex flex-column w-100 h-100">
+                <header class="library-header d-flex justify-content-between align-items-center px-4 py-3">
+                    <a href="#" class="library-title text-decoration-none d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-book-open fs-4"></i><span class="fw-bold fs-6">Your Library</span>
+                    </a>
+                </header>
+                <div class="sidebar-content overflow-y-auto px-2 mt-2 flex-grow-1">
+                    <div class="action-box">
+                        <h3 class="fw-bold">Create your first playlist</h3>
+                        <p class="mb-3">It's easy, we'll help you</p>
+                        <button class="btn pill-btn text-black fw-bold rounded-pill">Create playlist</button>
+                    </div>
+                </div>
+                <div class="sidebar-footer px-4 py-4 mt-auto">
+                    <div class="d-flex flex-wrap gap-3 mb-4 footer-links">
+                        <a href="#">Legal</a><a href="#">Privacy Center</a><a href="#">Cookies</a>
+                    </div>
+                    <button class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 lang-btn">
+                        <i class="fa-solid fa-globe"></i> English
+                    </button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- DYNAMIC ALBUM CONTENT -->
+        <div class="col-12 col-md-8 col-lg-9 h-100">
+            <main class="main-content-area w-100 h-100 p-4 pb-0">
+                
+                <div class="album-banner d-flex align-items-end mb-4">
+                    <img src="" id="album-cover" alt="Album Cover" class="album-banner-img shadow-lg me-4">
+                    <div class="album-info text-white">
+                        <span id="album-type" class="text-uppercase fw-bold small"></span>
+                        <h1 id="album-title" class="album-main-title fw-bold mb-3"></h1>
+                        <div class="d-flex align-items-center gap-2 album-meta">
+                            <span id="album-artist" class="fw-bold hover-underline cursor-pointer"></span>
+                            <span id="album-meta-info" class="text-white-50"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="album-action-bar d-flex align-items-center gap-4 mb-4">
+                    <button class="album-play-btn shadow"><i class="fa-solid fa-play"></i></button>
+                    <button class="action-icon-btn"><i class="fa-regular fa-heart"></i></button>
+                    <button class="action-icon-btn"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+
+                <!-- JS Injects Tracks Here -->
+                <div id="track-list" class="tracklist-container mb-5"></div>
+
+            </main>
+        </div>
+    </div>
+    
+    <!-- AUDIO PLAYER (Functional Bottom Bar) -->
+    <div class="preview-banner d-flex justify-content-between align-items-center bg-dark" style="background: #181818 !important;">
+        <div class="d-flex align-items-center gap-3 text-white">
+            <img id="now-playing-img" src="https://via.placeholder.com/50" style="width: 56px; height: 56px; border-radius: 4px;">
+            <div>
+                <p id="now-playing-title" class="mb-0 fw-bold fs-6">Select a track</p>
+                <p id="now-playing-artist" class="mb-0 text-secondary small">Artist</p>
+            </div>
+        </div>
+        <div class="d-flex flex-column align-items-center w-50">
+            <div class="d-flex gap-4 align-items-center mb-1">
+                <button class="action-icon-btn fs-5"><i class="fa-solid fa-backward-step"></i></button>
+                <button class="btn btn-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;"><i class="fa-solid fa-play"></i></button>
+                <button class="action-icon-btn fs-5"><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+            <div class="w-100 d-flex align-items-center gap-2">
+                <span class="text-secondary" style="font-size: 11px;">0:00</span>
+                <div class="progress w-100 bg-secondary" style="height: 4px; cursor: pointer;">
+                    <div class="progress-bar bg-white" style="width: 0%;"></div>
+                </div>
+                <span class="text-secondary" style="font-size: 11px;">0:00</span>
+            </div>
+        </div>
+        <div class="d-flex align-items-center gap-2 text-secondary w-25 justify-content-end">
+            <i class="fa-solid fa-volume-high"></i>
+            <div class="progress w-50 bg-secondary" style="height: 4px; cursor: pointer;">
+                <div class="progress-bar bg-white" style="width: 50%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

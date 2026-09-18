@@ -1,0 +1,387 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  padding-top: 4rem;
+  padding-bottom: 18rem;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.hero-title {
+  text-align: center;
+
+  z-index: 5;
+
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 2rem;
+
+  pointer-events: none;
+
+  margin-top: 2rem;
+}
+
+
+/* =========================================
+   PORTRAIT WRAPPER
+========================================= */
+
+.hero-portrait-wrapper {
+  position: absolute;
+
+  bottom: 0;
+
+  left: 0;
+  right: 0;
+
+  margin: 0 auto;
+
+  width: 100%;
+  max-width: 500px;
+
+  z-index: 15;
+
+  pointer-events: auto;
+
+  user-select: none;
+
+  cursor: none;
+
+  /*
+    CSS variable containing
+    all current brush strokes.
+  */
+
+  --reveal-mask: none;
+}
+
+
+/* =========================================
+   PORTRAIT CONTAINER
+========================================= */
+
+.hero-portrait-placeholder {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-end;
+
+  /*
+    Fade bottom of portrait.
+  */
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 70%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 70%,
+    transparent 100%
+  );
+}
+
+
+/* =========================================
+   COMMON IMAGE
+========================================= */
+
+.hero-image {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+/* =========================================
+   GRAYSCALE BASE
+========================================= */
+
+.hero-image-base {
+  position: relative;
+
+  z-index: 1;
+
+  filter:
+    grayscale(100%)
+    contrast(1.08)
+    brightness(1.06);
+}
+
+
+/* =========================================
+   COLOR IMAGE
+========================================= */
+
+.hero-image-reveal {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  z-index: 2;
+
+  filter:
+    grayscale(0%)
+    contrast(1.08)
+    brightness(1.06);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  /*
+    THE IMPORTANT PART
+
+    The mask consists of multiple
+    soft brush strokes.
+
+    Each cursor position becomes
+    another soft reveal point.
+  */
+
+  mask-image: var(--reveal-mask);
+
+  -webkit-mask-image: var(--reveal-mask);
+
+  /*
+    Makes overlapping brush strokes
+    combine naturally.
+  */
+
+  mask-repeat: no-repeat;
+
+  -webkit-mask-repeat: no-repeat;
+
+  /*
+    Smooth fading.
+  */
+
+  transition:
+    opacity 0.2s ease;
+
+  will-change:
+    mask-image;
+}
+
+
+/* =========================================
+   SHOW COLOR
+========================================= */
+
+.hero-portrait-wrapper.is-hovering
+.hero-image-reveal {
+  opacity: 1;
+}
+
+
+/* =========================================
+   META
+========================================= */
+
+.hero-meta {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  margin-top: clamp(
+    10rem,
+    25vw,
+    18rem
+  );
+
+  z-index: 20;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ROLE
+========================================= */
+
+.hero-role {
+  max-width: 320px;
+  pointer-events: auto;
+}
+
+.hero-role h2 {
+  font-size: 1.5rem;
+
+  font-weight: 700;
+
+  margin-bottom: 0.5rem;
+}
+
+.hero-role p {
+  font-size: 0.875rem;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   SOCIALS
+========================================= */
+
+.hero-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+
+  .hero-meta {
+    margin-top: clamp(
+      14rem,
+      40vw,
+      22rem
+    );
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .home-container {
+    padding-top: 2rem;
+  }
+
+
+  .hero-title {
+    flex-direction: column;
+
+    gap: 0;
+  }
+
+
+  .hero-portrait-wrapper {
+
+    position: relative;
+
+    bottom: auto;
+
+    top: 0;
+
+    left: 0;
+    right: 0;
+
+    margin: 2rem auto;
+
+    max-width: 100%;
+
+    cursor: default;
+  }
+
+
+  .hero-image-reveal {
+    display: none;
+  }
+
+
+  .hero-meta {
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 3rem;
+
+    margin-top: 2rem;
+  }
+
+
+  .hero-role {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+
+  .hero-socials {
+
+    align-items: center;
+
+    flex-direction: row;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+}

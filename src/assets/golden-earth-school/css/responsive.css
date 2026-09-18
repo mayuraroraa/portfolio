@@ -1,0 +1,680 @@
+/* ============================================================
+   GOLDEN EARTH CONVENT SCHOOL — RESPONSIVE
+   All breakpoints: 1440 → 1280 → 1024 → 768 → 430 → 375
+   ============================================================ */
+
+/* ============================================================
+   COMPACT DESKTOP (≤1280px)
+   ============================================================ */
+@media (max-width: 1280px) {
+  :root {
+    --section-py: 5rem;
+    --section-py-lg: 6rem;
+  }
+
+  .headline-editorial {
+    font-size: var(--text-5xl);
+  }
+
+  .hero__title {
+    font-size: var(--text-5xl);
+  }
+
+  .about-grid {
+    gap: var(--space-10);
+  }
+
+  .leadership-layout {
+    gap: var(--space-10);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ============================================================
+   TABLET LANDSCAPE (≤1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+  :root {
+    --section-py: 4rem;
+    --section-py-lg: 5rem;
+  }
+
+  /* Navigation */
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  /* Hero */
+  .hero__title {
+    font-size: var(--text-4xl);
+    max-width: 500px;
+  }
+
+  .hero__gold-line {
+    display: none;
+  }
+
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .about__images {
+    min-height: 400px;
+  }
+
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .stats-grid .stat:nth-child(2)::after {
+    display: none;
+  }
+
+  /* Why grid */
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-image {
+    grid-column: span 2;
+    height: 300px;
+  }
+
+  /* Leadership */
+  .leadership-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .leadership__portrait img {
+    height: 350px;
+  }
+
+  /* Principal quote */
+  .principal-quote {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .principal-quote__portrait img {
+    height: 350px;
+    max-width: 400px;
+  }
+
+  /* FAQ */
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .faq-layout__heading {
+    position: static;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Gallery */
+  .gallery-masonry {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 200px;
+  }
+
+  .gallery-masonry .gallery-card:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  /* Notices */
+  .notices-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Student life */
+  .student-life-card {
+    flex: 0 0 240px;
+    height: 320px;
+  }
+
+  .student-life-card:hover {
+    flex: 0 0 320px;
+  }
+}
+
+/* ============================================================
+   TABLET PORTRAIT (≤768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --section-py: 3.5rem;
+    --section-py-lg: 4rem;
+  }
+
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+  h3 { font-size: var(--text-xl); }
+
+  .headline-editorial {
+    font-size: var(--text-3xl);
+  }
+
+  .headline-section {
+    font-size: var(--text-2xl);
+  }
+
+  .container {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 90vh;
+  }
+
+  .hero__content {
+    padding: var(--space-24) var(--space-5) var(--space-16);
+  }
+
+  .hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  .hero__subtitle {
+    font-size: var(--text-base);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* About */
+  .about__img-main {
+    width: 100%;
+    height: 300px;
+  }
+
+  .about__img-secondary {
+    width: 60%;
+    height: 180px;
+    bottom: -10px;
+  }
+
+  .about__stat-float {
+    right: 10px;
+    top: 10px;
+    padding: var(--space-4);
+  }
+
+  .about__stat-number {
+    font-size: var(--text-2xl);
+  }
+
+  /* Stats */
+  .stats-grid .stat:not(:last-child)::after {
+    display: none;
+  }
+
+  .stat__number {
+    font-size: var(--text-4xl);
+  }
+
+  /* Why grid */
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-image {
+    grid-column: span 1;
+    height: 250px;
+  }
+
+  /* Campus cards */
+  .campus-card {
+    flex: 0 0 280px;
+    height: 380px;
+  }
+
+  /* Admissions steps */
+  .admissions-steps {
+    flex-direction: column;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .admissions-steps::before {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    width: 1px;
+    height: 100%;
+  }
+
+  .admission-step__connector {
+    display: none;
+  }
+
+  /* Timeline — vertical on mobile */
+  .timeline {
+    flex-direction: column;
+    gap: var(--space-8);
+    padding-left: var(--space-8);
+  }
+
+  .timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 6px;
+    right: auto;
+    width: 1px;
+    height: 100%;
+    transform: none;
+  }
+
+  .timeline-item {
+    text-align: left;
+    padding-top: 0;
+    padding-left: var(--space-8);
+  }
+
+  .timeline-item__dot {
+    top: 4px;
+    left: -36px;
+    transform: none;
+  }
+
+  /* Sports */
+  .sports-immersive {
+    min-height: 500px;
+  }
+
+  .sports-immersive__overlay {
+    background: linear-gradient(
+      to top,
+      rgba(8, 43, 102, 0.9) 0%,
+      rgba(8, 43, 102, 0.5) 60%,
+      transparent 100%
+    );
+  }
+
+  .sports-immersive__content {
+    padding: var(--space-8) var(--space-5);
+    position: absolute;
+    bottom: 0;
+  }
+
+  /* Gallery */
+  .gallery-masonry {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 180px;
+  }
+
+  .gallery-masonry .gallery-card:nth-child(1) {
+    grid-row: span 1;
+  }
+
+  /* Testimonial */
+  .testimonial__text {
+    font-size: var(--text-xl);
+  }
+
+  /* Section curve */
+  .section-curve-top::before,
+  .section-curve-bottom::after {
+    height: 40px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__closing-text {
+    font-size: var(--text-2xl);
+  }
+
+  /* Intro */
+  .intro__logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .intro__ring {
+    width: 140px;
+    height: 140px;
+  }
+
+  .intro__school-name {
+    font-size: var(--text-xl);
+  }
+
+  /* Final CTA */
+  .final-cta__heading {
+    font-size: var(--text-2xl);
+  }
+
+  /* Page hero */
+  .page-hero {
+    padding: var(--space-32) 0 var(--space-12);
+  }
+
+  .page-hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  /* Section numbers */
+  .section-number {
+    font-size: var(--text-5xl);
+  }
+
+  /* Philosophy cards */
+  .philosophy-card {
+    flex: 0 0 260px;
+    padding: var(--space-6);
+  }
+
+  /* Student life */
+  .student-life-card {
+    flex: 0 0 200px;
+    height: 280px;
+  }
+
+  .student-life-card:hover {
+    flex: 0 0 260px;
+  }
+
+  /* Leadership tabs */
+  .leadership__tabs {
+    flex-wrap: wrap;
+  }
+
+  /* Principal quote */
+  .principal-quote__portrait img {
+    height: 300px;
+    max-width: 100%;
+  }
+
+  .principal-quote__mark {
+    font-size: var(--text-6xl);
+  }
+
+  .principal-quote__text {
+    font-size: var(--text-xl);
+  }
+}
+
+/* ============================================================
+   MOBILE LARGE (≤430px)
+   ============================================================ */
+@media (max-width: 430px) {
+  :root {
+    --section-py: 3rem;
+  }
+
+  body {
+    font-size: var(--text-sm);
+  }
+
+  h1 { font-size: var(--text-2xl); }
+  h2 { font-size: var(--text-xl); }
+
+  .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .headline-section {
+    font-size: var(--text-xl);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-10);
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 85vh;
+  }
+
+  .hero__title {
+    font-size: var(--text-2xl);
+  }
+
+  /* Buttons */
+  .btn {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-xs);
+  }
+
+  .btn--lg {
+    padding: var(--space-4) var(--space-8);
+  }
+
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .stat__number {
+    font-size: var(--text-3xl);
+  }
+
+  /* Mobile menu */
+  .mobile-menu__link {
+    font-size: var(--text-2xl);
+    padding: var(--space-3) 0;
+  }
+
+  /* Gallery */
+  .gallery-masonry {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+  }
+
+  .gallery-masonry .gallery-card:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  /* Gallery filters */
+  .gallery-filters {
+    gap: var(--space-2);
+  }
+
+  .gallery-filter {
+    padding: var(--space-2) var(--space-3);
+    font-size: 10px;
+  }
+
+  /* Campus */
+  .campus-card {
+    flex: 0 0 240px;
+    height: 320px;
+  }
+
+  /* Student life */
+  .student-life-card {
+    flex: 0 0 180px;
+    height: 240px;
+  }
+
+  /* Downloads */
+  .download-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Notice */
+  .notice-featured {
+    padding: var(--space-6);
+  }
+
+  /* Testimonial */
+  .testimonial__text {
+    font-size: var(--text-lg);
+  }
+
+  .testimonial__quote-mark {
+    font-size: var(--text-5xl);
+  }
+
+  /* Footer */
+  .footer__closing-text {
+    font-size: var(--text-xl);
+  }
+
+  .footer {
+    padding-top: var(--space-12);
+  }
+
+  /* Philosophy */
+  .philosophy-card {
+    flex: 0 0 220px;
+  }
+
+  .philosophy-card__number {
+    font-size: var(--text-4xl);
+  }
+
+  /* Form */
+  .form-input,
+  .form-textarea {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* ============================================================
+   MOBILE SMALL (≤375px)
+   ============================================================ */
+@media (max-width: 375px) {
+  .hero__title {
+    font-size: var(--text-xl);
+  }
+
+  .stat__number {
+    font-size: var(--text-2xl);
+  }
+
+  .intro__school-name {
+    font-size: var(--text-lg);
+  }
+
+  .intro__tagline {
+    font-size: var(--text-sm);
+  }
+
+  .final-cta__heading {
+    font-size: var(--text-xl);
+  }
+
+  .campus-card {
+    flex: 0 0 200px;
+    height: 280px;
+  }
+}
+
+/* ============================================================
+   CUSTOM CURSOR — disable on touch devices
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   STICKY APPLY NOW BAR (mobile only)
+   ============================================================ */
+.mobile-apply-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  background: var(--navy);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-apply-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.mobile-apply-bar__text {
+  font-size: var(--text-sm);
+  color: var(--text-on-navy);
+  font-weight: var(--weight-medium);
+}
+
+.mobile-apply-bar .btn {
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .mobile-apply-bar {
+    display: block;
+  }
+
+  /* Add bottom padding to footer to account for bar */
+  .footer__copyright {
+    padding-bottom: calc(var(--space-6) + 60px);
+  }
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+@media print {
+  .navbar,
+  .intro-overlay,
+  .custom-cursor,
+  .mobile-menu,
+  .mobile-apply-bar,
+  .scroll-indicator,
+  .hero__gold-line {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .section--navy {
+    background: #f0f0f0 !important;
+    color: #000 !important;
+  }
+
+  .section--navy h1,
+  .section--navy h2,
+  .section--navy h3,
+  .section--navy p {
+    color: #000 !important;
+  }
+}
