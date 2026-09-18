@@ -277,19 +277,7 @@ const Home = () => {
           <div className="hero-socials">
 
             <a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-              className="
-                pill-btn
-                pill-btn-outline
-              "
-            >
-              GitHub
-            </a>
-
-            <a
-              href="https://twitter.com"
+              href="https://www.instagram.com/mayurraroraa/"
               target="_blank"
               rel="noreferrer"
               className="
@@ -301,7 +289,7 @@ const Home = () => {
             </a>
 
             <a
-              href="https://linkedin.com"
+              href="[mayuraroraa@gmail.com]"
               target="_blank"
               rel="noreferrer"
               className="
@@ -309,11 +297,11 @@ const Home = () => {
                 pill-btn-outline
               "
             >
-              LinkedIn
+             E-mail
             </a>
 
             <a
-              href="https://youtube.com"
+              href="https://snapchat.com/t/owHCb7DD"
               target="_blank"
               rel="noreferrer"
               className="

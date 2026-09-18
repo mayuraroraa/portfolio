@@ -7,11 +7,13 @@
 }
 
 .work-header {
+ 
   margin-bottom: 4rem;
 }
 
 .work-title-wrapper {
   position: relative;
+  margin-top: 1rem;
   display: inline-block;
 }
 
