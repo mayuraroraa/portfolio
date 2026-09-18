@@ -16,17 +16,19 @@ const About = () => {
 
       <div className="about-content">
         <ScrollReveal delay={0.2} className="about-text-column">
-          <h2 className="about-subtitle">Building digital products with ambition and curiosity.</h2>
+          <h2 className="about-subtitle">I build ideas from the interface
+to the infrastructure.</h2>
           
           <div className="about-text-blocks">
             <p>
-              I am a 17-year-old Class 12 student who is deeply interested in technology, development, AI, and entrepreneurship.
+             I’m a young full-stack developer exploring technology, AI, creative digital experiences, and entrepreneurship.
             </p>
             <p>
-              Alongside school, I am learning full-stack development and building projects to turn what I learn into practical products. I enjoy understanding how digital products work from the frontend to the backend, rather than only focusing on visual design.
+         I’m a young full-stack developer exploring technology, AI, creative digital experiences, and entrepreneurship.From writing interfaces and building backends to experimenting with AI and visual storytelling, I’m constantly turning things I learn into things I can actually build.
             </p>
             <p>
-              I am also interested in video editing and creative digital experiences. My long-term direction is to combine technology, AI, digital products, entrepreneurship, and creativity.
+            The goal isn't to just become a developer.
+It’s to become a builder.
             </p>
           </div>
         </ScrollReveal>

@@ -10,9 +10,7 @@ const Services = () => {
   return (
     <div id="services" className="services-container container">
       <ScrollReveal yOffset={20}>
-        <div className="services-header">
-          <h1 className="display-large text-outlined">SERVICES</h1>
-        </div>
+        <h1 className="text-outlined">SERVICES</h1>
       </ScrollReveal>
 
       <ScrollReveal yOffset={30} delay={0.2} className="services-list-wrapper">
