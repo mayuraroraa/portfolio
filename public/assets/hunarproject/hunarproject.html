@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Hunar The Skill House — Janmashtami Special! Get 50% OFF on our Digital Marketing Course. Limited-time offer on practical, career-focused training.">
+    <title>Hunar The Skill House | Janmashtami Special — 50% OFF Digital Marketing</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons (Phosphor Icons for a premium look) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="hunarproject.css">
+</head>
+
+<body>
+    <!-- Countdown Timer Bar -->
+    <div class="countdown-bar" id="countdown-bar">
+        <div class="container countdown-container">
+            <div class="countdown-label">
+                <span class="countdown-lotus">🪷</span>
+                <span class="countdown-text">JANMASHTAMI SPECIAL OFFER</span>
+                <span class="countdown-divider">•</span>
+                <span class="countdown-text countdown-text--emphasis">LIMITED TIME ONLY</span>
+            </div>
+            <div class="countdown-timer" id="countdown-timer">
+                <div class="countdown-block">
+                    <span class="countdown-digit" id="countdown-days">00</span>
+                    <span class="countdown-unit">DAYS</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-block">
+                    <span class="countdown-digit" id="countdown-hours">00</span>
+                    <span class="countdown-unit">HOURS</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-block">
+                    <span class="countdown-digit" id="countdown-minutes">00</span>
+                    <span class="countdown-unit">MINS</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-block">
+                    <span class="countdown-digit" id="countdown-seconds">00</span>
+                    <span class="countdown-unit">SECS</span>
+                </div>
+            </div>
+            <div class="countdown-expired" id="countdown-expired" style="display: none;">
+                <span>🪷 This offer has ended. Stay tuned for more!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="imgs/assets/LOGO BG 2- HUNAR.png" alt="Hunar The Skill House" class="logo-img">
+            </a>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <button class="btn btn-primary nav-cta">Get Started</button>
+
+            <div class="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Decorative gold corners -->
+        <div class="hero-ornament hero-ornament--tl"></div>
+        <div class="hero-ornament hero-ornament--tr"></div>
+        <div class="hero-ornament hero-ornament--bl"></div>
+        <div class="hero-ornament hero-ornament--br"></div>
+
+        <div class="container hero-container">
+            <div class="hero-content fade-in-up">
+                <span class="hero-subtitle">🪷 Janmashtami Special Offer</span>
+                <h1 class="hero-title">Learn Skills.<br>Build Your Future.</h1>
+                <p class="hero-festive-tag">Celebrate Janmashtami with <strong>50% OFF</strong> on Digital Marketing</p>
+                <p class="hero-text">We provide practical, career-focused training designed to help you develop
+                    real-world skills that employers demand.</p>
+                <div class="hero-buttons">
+                    <a href="#offer" class="btn btn-primary">Grab the Offer</a>
+                    <a href="#courses" class="btn btn-outline">Explore Courses</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper fade-in-up" style="animation-delay: 0.2s;">
+                <div class="krishna-artwork-wrapper">
+                    <img src="imgs/assets/krishna-artwork.jpg" alt="Elegant Krishna illustration for Janmashtami celebration"
+                        class="krishna-artwork" id="krishna-artwork">
+                    <div class="krishna-glow"></div>
+                </div>
+                <div class="hero-decoration"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Offer Section -->
+    <section id="offer" class="offer-section">
+        <div class="container">
+            <div class="offer-card scale-in">
+                <!-- Ornamental frame corners -->
+                <div class="offer-ornament offer-ornament--tl"></div>
+                <div class="offer-ornament offer-ornament--tr"></div>
+                <div class="offer-ornament offer-ornament--bl"></div>
+                <div class="offer-ornament offer-ornament--br"></div>
+
+                <div class="offer-content">
+                    <span class="offer-festival-label">🪷 Janmashtami Special</span>
+                    <span class="offer-badge">Limited Time Offer</span>
+                    <h2>50% OFF on Digital Marketing Course</h2>
+                    <p>Master SEO, SMM, and Performance Marketing with practical projects.</p>
+                </div>
+                <div class="offer-price">
+                    <span class="offer-price-label">Special Price</span>
+                    <div class="original-price">₹10,000</div>
+                    <div class="current-price" id="offer-price">₹5,000</div>
+                    <a href="#contact" class="btn btn-primary offer-btn">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Section -->
+    <section id="courses" class="courses-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Our Premium Courses</h2>
+                <p>Master the most in-demand skills with our expert-led, practical training programs.</p>
+            </div>
+
+            <div class="course-grid">
+                <!-- Course 1 — Digital Marketing (Featured) -->
+                <div class="course-card course-card--featured fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="course-image">
+                        <img src="imgs/assets/course-dm.jpg" alt="Digital Marketing">
+                        <span class="course-tag">Bestseller</span>
+                        <span class="course-offer-badge">50% OFF</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>Digital Marketing</h3>
+                        <p>Master SEO, Social Media, Google Ads, and content strategies with live projects.</p>
+                        <ul class="course-skills">
+                            <li><i class="ph ph-check-circle"></i> SEO & SMM</li>
+                            <li><i class="ph ph-check-circle"></i> Google & Meta Ads</li>
+                        </ul>
+                        <a href="#offer" class="btn btn-primary full-width">View Offer</a>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="course-image">
+                        <img src="imgs/assets/course-fs.jpg" alt="Full Stack Development">
+                    </div>
+                    <div class="course-info">
+                        <h3>Full Stack Development</h3>
+                        <p>Learn to build modern, scalable web applications from front to back.</p>
+                        <ul class="course-skills">
+                            <li><i class="ph ph-check-circle"></i> React & Node.js</li>
+                            <li><i class="ph ph-check-circle"></i> Database Design</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline full-width">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="course-image">
+                        <img src="imgs/assets/course-gd.jpg" alt="Graphic Design">
+                    </div>
+                    <div class="course-info">
+                        <h3>Graphic Design</h3>
+                        <p>Turn your creativity into a profession. Master standard design tools.</p>
+                        <ul class="course-skills">
+                            <li><i class="ph ph-check-circle"></i> Photoshop & Illustrator</li>
+                            <li><i class="ph ph-check-circle"></i> UI/UX Basics</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline full-width">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="about" class="why-us-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Why Choose Hunar The Skill House?</h2>
+                <p>We focus on practical, career-driven education.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon"><i class="ph ph-briefcase"></i></div>
+                    <h4>Practical Learning</h4>
+                    <p>Focus on real-world applications rather than just theory.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="feature-icon"><i class="ph ph-users-three"></i></div>
+                    <h4>Experienced Mentors</h4>
+                    <p>Learn directly from industry professionals with years of experience.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon"><i class="ph ph-laptop"></i></div>
+                    <h4>Hands-On Projects</h4>
+                    <p>Build a strong portfolio with multiple practical assignments.</p>
+                </div>
+                <div class="feature-card fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="feature-icon"><i class="ph ph-trend-up"></i></div>
+                    <h4>Career Focused</h4>
+                    <p>Curriculum designed specifically to make you job-ready.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Approach -->
+    <section class="approach-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Our Learning Approach</h2>
+            </div>
+            <div class="process-wrapper">
+                <div class="process-step fade-in-up">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="ph ph-book-open"></i></div>
+                    <h4>Learn</h4>
+                    <p>Grasp core concepts</p>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="ph ph-code"></i></div>
+                    <h4>Practice</h4>
+                    <p>Apply your knowledge</p>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="ph ph-rocket-launch"></i></div>
+                    <h4>Build</h4>
+                    <p>Create real projects</p>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="ph ph-chart-line-up"></i></div>
+                    <h4>Grow</h4>
+                    <p>Advance your career</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in-up">
+                    <h3 class="counter" data-target="500">0</h3>
+                    <span>+</span>
+                    <p>Students Trained</p>
+                </div>
+                <div class="stat-item fade-in-up" style="animation-delay: 0.1s;">
+                    <h3 class="counter" data-target="10">0</h3>
+                    <span>+</span>
+                    <p>Skill Courses</p>
+                </div>
+                <div class="stat-item fade-in-up" style="animation-delay: 0.2s;">
+                    <h3 class="counter" data-target="95">0</h3>
+                    <span>%</span>
+                    <p>Satisfaction Rate</p>
+                </div>
+                <div class="stat-item fade-in-up" style="animation-delay: 0.3s;">
+                    <h3 class="counter" data-target="50">0</h3>
+                    <span>+</span>
+                    <p>Practical Projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Student Success Stories</h2>
+                <p>Hear from our graduates who have transformed their careers.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in-up">
+                    <div class="testimonial-rating">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The digital marketing course completely changed my career trajectory.
+                        The practical approach was exactly what I needed."</p>
+                    <div class="student-profile">
+                        <div class="avatar">A</div>
+                        <div class="student-info">
+                            <h5>Aman Kumar</h5>
+                            <span>Digital Marketing Alumnus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="testimonial-rating">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Excellent mentors and hands-on projects. I built a full portfolio
+                        during the web development course."</p>
+                    <div class="student-profile">
+                        <div class="avatar">P</div>
+                        <div class="student-info">
+                            <h5>Priya Sharma</h5>
+                            <span>Web Dev Alumnus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="testimonial-rating">
+                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                            class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Highly recommend Hunar The Skill House. The trainers really care about
+                        your growth and understanding of the concepts."</p>
+                    <div class="student-profile">
+                        <div class="avatar">R</div>
+                        <div class="student-info">
+                            <h5>Rahul Verma</h5>
+                            <span>Graphic Design Alumnus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta-section">
+        <div class="container final-cta-container scale-in">
+            <span class="cta-festive-label">🪷 Janmashtami Limited-Time Offer</span>
+            <h2>Ready to Build Your Skills?</h2>
+            <p>Start learning practical, career-focused skills with Hunar The Skill House today.</p>
+            <div class="cta-buttons">
+                <a href="#courses" class="btn btn-outline">Explore Courses</a>
+                <a href="#" class="btn btn-primary">Grab 50% OFF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo footer-logo">
+                        <img src="imgs/assets/LOGO BG 2- HUNAR.png" alt="Hunar The Skill House" class="logo-img">
+                    </a>
+                    <p>Empowering individuals with practical, career-driven skills for a better future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph ph-facebook-logo"></i></a>
+                        <a href="#"><i class="ph ph-youtube-logo"></i></a>
+                        <a href="#"><i class="ph ph-whatsapp-logo"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Top Courses</h4>
+                    <ul>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Full Stack Development</a></li>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Video Editing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="ph ph-map-pin"></i> <span>123 Skill Avenue, Business Hub, City 10001</span></li>
+                        <li><i class="ph ph-phone"></i> <span>+91 98765 43210</span></li>
+                        <li><i class="ph ph-envelope-simple"></i> <span>info@hunarskillhouse.com</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hunar The Skill House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="hunarproject.js"></script>
+</body>
+
+</html>

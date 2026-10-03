@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -13,7 +15,6 @@ const PageTransition = ({ children }) => {
       variants={pageVariants}
       initial="initial"
       animate="animate"
-      exit="exit"
       style={{ width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}
     >
       {children}

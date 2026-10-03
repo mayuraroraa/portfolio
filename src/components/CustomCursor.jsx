@@ -1,7 +1,11 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const CustomCursor = () => {
+  const [mounted, setMounted] = useState(false);
+  const [isCoarse, setIsCoarse] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
@@ -11,9 +15,10 @@ const CustomCursor = () => {
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    if (window.matchMedia('(pointer: coarse)').matches) {
-      return;
-    }
+    setMounted(true);
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    setIsCoarse(coarse);
+    if (coarse) return;
 
     const updatePosition = (e) => {
       cursorX.set(e.clientX - 10);
@@ -21,11 +26,12 @@ const CustomCursor = () => {
     };
 
     const handleMouseOver = (e) => {
+      const target = e.target;
       if (
-        e.target.tagName.toLowerCase() === 'button' ||
-        e.target.tagName.toLowerCase() === 'a' ||
-        e.target.closest('button') ||
-        e.target.closest('a')
+        target?.tagName?.toLowerCase() === 'button' ||
+        target?.tagName?.toLowerCase() === 'a' ||
+        target?.closest?.('button') ||
+        target?.closest?.('a')
       ) {
         setIsHovering(true);
       } else {
@@ -33,8 +39,8 @@ const CustomCursor = () => {
       }
     };
 
-    window.addEventListener('mousemove', updatePosition);
-    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mousemove', updatePosition, { passive: true });
+    window.addEventListener('mouseover', handleMouseOver, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', updatePosition);
@@ -42,7 +48,7 @@ const CustomCursor = () => {
     };
   }, [cursorX, cursorY]);
 
-  if (window.matchMedia('(pointer: coarse)').matches) {
+  if (!mounted || isCoarse) {
     return null;
   }
 

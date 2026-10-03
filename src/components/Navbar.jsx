@@ -1,10 +1,13 @@
+'use client';
+
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -26,8 +29,8 @@ const Navbar = () => {
         {navLinks.map((link) => (
           <Link
             key={link.name}
-            to={link.path}
-            className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+            href={link.path}
+            className={`nav-link ${pathname === link.path ? 'active' : ''}`}
           >
             {link.name} {link.count && <span className="nav-count">[{link.count}]</span>}
           </Link>
@@ -35,7 +38,7 @@ const Navbar = () => {
       </nav>
 
       <div className="navbar-action">
-        <Link to="/contact" className="pill-btn pill-btn-dark">
+        <Link href="/contact" className="pill-btn pill-btn-dark">
           Contact Us <ArrowUpRight size={14} />
         </Link>
       </div>
