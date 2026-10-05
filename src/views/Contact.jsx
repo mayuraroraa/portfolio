@@ -16,6 +16,7 @@ const Contact = ({ className = '' }) => {
   });
 
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [whatsappUrl, setWhatsappUrl] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,7 +27,14 @@ const Contact = ({ className = '' }) => {
     setStatus('loading');
     
     try {
-      await contactService.submitInquiry(formData);
+      const result = await contactService.submitInquiry(formData);
+      if (result.whatsappUrl) {
+        setWhatsappUrl(result.whatsappUrl);
+        // Open WhatsApp in a new tab with the pre-filled message
+        if (typeof window !== 'undefined') {
+          window.open(result.whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
+      }
       setStatus('success');
       setFormData({ name: '', email: '', projectType: 'Not sure yet', budget: 'Not sure yet', message: '' });
     } catch (error) {
@@ -54,8 +62,21 @@ const Contact = ({ className = '' }) => {
         {status === 'success' ? (
           <div className="success-message">
             <h3>Thank you!</h3>
-            <p>Your message has been sent successfully. I'll get back to you soon.</p>
-            <button className="pill-btn pill-btn-outline" onClick={() => setStatus('idle')}>Send another message</button>
+            <p>Your message has been sent to my email.</p>
+            {whatsappUrl && (
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="pill-btn pill-btn-dark"
+                style={{ marginTop: '0.75rem', marginBottom: '0.5rem' }}
+              >
+                Chat on WhatsApp <ArrowUpRight size={16} />
+              </a>
+            )}
+            <button className="pill-btn pill-btn-outline" onClick={() => setStatus('idle')}>
+              Send another message
+            </button>
           </div>
         ) : (
           <form className="contact-form" onSubmit={handleSubmit}>
