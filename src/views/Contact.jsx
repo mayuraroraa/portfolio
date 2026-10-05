@@ -25,20 +25,41 @@ const Contact = ({ className = '' }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    
+
+    // Build the WhatsApp message URL synchronously
+    const whatsappMessage = 
+      `*New Project Inquiry from Portfolio*\n\n` +
+      `👤 *Name:* ${formData.name}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `🛠 *Project Type:* ${formData.projectType}\n` +
+      `💰 *Budget Range:* ${formData.budget}\n\n` +
+      `📝 *Message:*\n${formData.message}`;
+
+    const waUrl = `https://wa.me/918360825752?text=${encodeURIComponent(whatsappMessage)}`;
+    setWhatsappUrl(waUrl);
+
+    // To prevent browser popup blockers, prepare the tab before the async request
+    let newTab = null;
+    const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!isMobile && typeof window !== 'undefined') {
+      newTab = window.open('about:blank', '_blank');
+    }
+
     try {
-      const result = await contactService.submitInquiry(formData);
-      if (result.whatsappUrl) {
-        setWhatsappUrl(result.whatsappUrl);
-        // Open WhatsApp in a new tab with the pre-filled message
-        if (typeof window !== 'undefined') {
-          window.open(result.whatsappUrl, '_blank', 'noopener,noreferrer');
-        }
+      await contactService.submitInquiry(formData);
+
+      // Open WhatsApp
+      if (newTab) {
+        newTab.location.href = waUrl;
+      } else if (isMobile && typeof window !== 'undefined') {
+        window.location.href = waUrl;
       }
+
       setStatus('success');
       setFormData({ name: '', email: '', projectType: 'Not sure yet', budget: 'Not sure yet', message: '' });
     } catch (error) {
       console.error(error);
+      if (newTab) newTab.close();
       setStatus('error');
     }
   };
@@ -62,16 +83,27 @@ const Contact = ({ className = '' }) => {
         {status === 'success' ? (
           <div className="success-message">
             <h3>Thank you!</h3>
-            <p>Your message has been sent to my email.</p>
+            <p>Your message has been submitted and sent to my email.</p>
             {whatsappUrl && (
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="pill-btn pill-btn-dark"
-                style={{ marginTop: '0.75rem', marginBottom: '0.5rem' }}
+                className="pill-btn"
+                style={{
+                  marginTop: '1rem',
+                  marginBottom: '0.75rem',
+                  backgroundColor: '#25D366',
+                  color: '#ffffff',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.85rem 1.75rem',
+                  fontSize: '0.95rem',
+                  fontWeight: '600'
+                }}
               >
-                Chat on WhatsApp <ArrowUpRight size={16} />
+                Send via WhatsApp <ArrowUpRight size={18} />
               </a>
             )}
             <button className="pill-btn pill-btn-outline" onClick={() => setStatus('idle')}>
