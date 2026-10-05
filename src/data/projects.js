@@ -12,7 +12,7 @@ export const projectsData = [
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
     image: goldenEarthImg,
-    liveUrl: '/src/assets/golden-earth-school/index.html',
+    liveUrl: '/assets/golden-earth-school/index.html',
     githubUrl: '#',
     featured: true
   },
@@ -24,7 +24,7 @@ export const projectsData = [
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
     image: hunarImg,
-    liveUrl: '/src/assets/hunarproject/hunarproject.html',
+    liveUrl: '/assets/hunarproject/hunarproject.html',
     githubUrl: '#',
     featured: true
   },
@@ -48,7 +48,7 @@ export const projectsData = [
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
     image: spotifyImg,
-    liveUrl: '/src/assets/spotify files/index.html',
+    liveUrl: '/assets/spotify files/index.html',
     githubUrl: '#',
     featured: true
   }
