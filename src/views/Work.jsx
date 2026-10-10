@@ -25,7 +25,12 @@ const Work = ({ className = '', items = null }) => {
           {displayProjects.map((project) => {
             const imgSrc = project.thumbnailUrl || (project.image?.src || project.image);
             const detailHref = `/project/${project.slug || project.id}`;
-            const targetLiveUrl = project.liveUrl && project.liveUrl !== '#' ? project.liveUrl : detailHref;
+            let rawUrl = (project.liveUrl || '').trim();
+            if (rawUrl.startsWith('#http://') || rawUrl.startsWith('#https://')) {
+              rawUrl = rawUrl.slice(1);
+            }
+            const targetLiveUrl = rawUrl && rawUrl !== '#' ? rawUrl : detailHref;
+            const isExternal = targetLiveUrl.startsWith('http://') || targetLiveUrl.startsWith('https://');
 
             return (
               <div key={project._id || project.id} className="project-card">
@@ -35,8 +40,8 @@ const Work = ({ className = '', items = null }) => {
                   <div className="project-overlay">
                     <a 
                       href={targetLiveUrl} 
-                      target={targetLiveUrl.startsWith('http') || targetLiveUrl.startsWith('/assets') ? '_blank' : '_self'} 
-                      rel="noreferrer" 
+                      target={isExternal ? '_blank' : '_self'} 
+                      rel={isExternal ? 'noopener noreferrer' : undefined} 
                       className="overlay-btn" 
                       aria-label={`View ${project.title}`}
                     >
