@@ -23,16 +23,8 @@ export const projectSchema = z.object({
   year: z.string().default(new Date().getFullYear().toString()),
   technologies: z.array(z.string()).min(1, 'At least one technology required'),
   thumbnailUrl: z.string().min(1, 'Thumbnail URL is required'),
-  liveUrl: z.string().default('#').transform(val => {
-    const trimmed = (val || '').trim();
-    if (trimmed.startsWith('#http://') || trimmed.startsWith('#https://')) return trimmed.slice(1);
-    return trimmed;
-  }),
-  githubUrl: z.string().default('#').transform(val => {
-    const trimmed = (val || '').trim();
-    if (trimmed.startsWith('#http://') || trimmed.startsWith('#https://')) return trimmed.slice(1);
-    return trimmed;
-  }),
+  liveUrl: z.string().default('#'),
+  githubUrl: z.string().default('#'),
   featured: z.boolean().default(false),
   status: z.enum(['draft', 'published']).default('published'),
   sortOrder: z.coerce.number().default(1)

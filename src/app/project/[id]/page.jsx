@@ -98,36 +98,26 @@ export default async function ProjectPage({ params }) {
 
         {/* Action Buttons */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginBottom: '4rem' }}>
-          {(() => {
-            let live = (project.liveUrl || '').trim();
-            if (live.startsWith('#http://') || live.startsWith('#https://')) live = live.slice(1);
-            if (!live || live === '#') return null;
-            return (
-              <a 
-                href={live} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="pill-btn pill-btn-dark"
-              >
-                Launch Live Experience <ArrowUpRight size={16} />
-              </a>
-            );
-          })()}
-          {(() => {
-            let gh = (project.githubUrl || '').trim();
-            if (gh.startsWith('#http://') || gh.startsWith('#https://')) gh = gh.slice(1);
-            if (!gh || gh === '#') return null;
-            return (
-              <a 
-                href={gh} 
-                target="_blank" 
-                rel="noreferrer" 
-                className="pill-btn pill-btn-outline"
-              >
-                <Code2 size={16} /> Source Code
-              </a>
-            );
-          })()}
+          {project.liveUrl && project.liveUrl !== '#' && (
+            <a 
+              href={project.liveUrl} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="pill-btn pill-btn-dark"
+            >
+              Launch Live Experience <ArrowUpRight size={16} />
+            </a>
+          )}
+          {project.githubUrl && project.githubUrl !== '#' && (
+            <a 
+              href={project.githubUrl} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="pill-btn pill-btn-outline"
+            >
+              <Code2 size={16} /> Source Code
+            </a>
+          )}
         </div>
 
         {/* Hero Image Showcase */}
