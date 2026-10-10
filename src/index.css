@@ -67,8 +67,14 @@ body {
 
 @media (max-width: 768px) {
   body {
-    padding: 1rem;
+    padding: 0.75rem;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.4rem;
   }
 }
 
@@ -105,27 +111,36 @@ img {
 
 @media (max-width: 768px) {
   #root {
-    min-height: calc(100vh - 2rem);
+    min-height: calc(100vh - 1.5rem);
     border-radius: var(--radius-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    min-height: calc(100vh - 0.8rem);
+    border-radius: var(--radius-md);
   }
 }
 
 /* Typography Utilities */
 .display-huge {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(2.25rem, 8.5vw, 8rem);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 .display-large {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  font-size: clamp(1.5rem, 4.5vw, 3.25rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  word-break: break-word;
 }
 
 .text-outlined {
@@ -160,6 +175,14 @@ img {
 @media (max-width: 768px) {
   .container {
     padding: 0 var(--space-sm);
+    margin: 12px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.85rem;
+    margin: 8px auto;
   }
 }
 
@@ -175,6 +198,13 @@ img {
   font-size: 0.875rem;
   transition: all 0.3s ease;
   white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .pill-btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.8125rem;
+  }
 }
 
 .pill-btn-dark {

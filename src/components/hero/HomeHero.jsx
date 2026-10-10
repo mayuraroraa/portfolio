@@ -6,7 +6,17 @@ import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import HeroPortrait from '@/components/interactive-image/HeroPortrait';
 
-const HomeHero = ({ className = '' }) => {
+const HomeHero = ({ className = '', settings = null }) => {
+  const headlineParts = (settings?.heroHeadline || 'MAYUR ARORA').split(' ');
+  const firstWord = headlineParts[0] || 'MAYUR';
+  const restWords = headlineParts.slice(1).join(' ') || 'ARORA';
+
+  const roleTitle = settings?.heroRoleTitle || 'Full-Stack Developer';
+  const bioText = settings?.heroBio || '17-year-old developer building digital products and AI experiences that are clear, robust, and highly functional.';
+  const email = settings?.publicContactEmail || 'mayuraroraa@gmail.com';
+  const whatsappUrl = settings?.socialLinks?.whatsapp || 'https://wa.me/+918360825752';
+  const instagramUrl = settings?.socialLinks?.instagram || 'https://www.instagram.com/mayurraroraa/';
+
   return (
     <div id="home" className={`home-container container ${className}`.trim()}>
       <div className="hero-section">
@@ -26,10 +36,10 @@ const HomeHero = ({ className = '' }) => {
             delay: 0.2,
           }}
         >
-          <span className="text-outlined">MAYUR</span> ARORA
+          <span className="text-outlined">{firstWord}</span> {restWords}
         </motion.h1>
 
-        {/* HERO PORTRAIT WITH UNIFIED CROSS-DEVICE POINTER EVENTS */}
+        {/* HERO PORTRAIT WITH UNIFIED CROSS-DEVICE POINTER EVENTS - EXACT ORIGINAL ASSET PRESERVED */}
         <HeroPortrait />
 
         {/* HERO META */}
@@ -47,12 +57,11 @@ const HomeHero = ({ className = '' }) => {
           }}
         >
           <div className="hero-role">
-            <h2>Full-Stack Developer</h2>
+            <h2>{roleTitle}</h2>
             <p className="text-secondary">
-              17-year-old developer building digital products and AI
-              experiences that are clear, robust, and highly functional.
+              {bioText}
             </p>
-            <Link to="/contact" href="/contact" className="pill-btn pill-btn-dark mt-4">
+            <Link href="/contact" className="pill-btn pill-btn-dark mt-4">
               Contact Us
               <ArrowUpRight size={16} />
             </Link>
@@ -60,7 +69,7 @@ const HomeHero = ({ className = '' }) => {
 
           <div className="hero-socials">
             <a
-              href="https://wa.me/+918360825752"
+              href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
               className="pill-btn pill-btn-outline"
@@ -69,7 +78,7 @@ const HomeHero = ({ className = '' }) => {
             </a>
 
             <a
-              href="mailto:[EMAIL_ADDRESS]"
+              href={`mailto:${email}`}
               target="_blank"
               rel="noreferrer"
               className="pill-btn pill-btn-outline"
@@ -78,7 +87,7 @@ const HomeHero = ({ className = '' }) => {
             </a>
 
             <a
-              href="https://www.instagram.com/mayurraroraa/"
+              href={instagramUrl}
               target="_blank"
               rel="noreferrer"
               className="pill-btn pill-btn-outline"

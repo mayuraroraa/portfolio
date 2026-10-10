@@ -11,6 +11,8 @@ const HeroPortrait = () => {
   const animationRef = useRef(null);
   const isPointerActiveRef = useRef(false);
 
+  const updateRevealRef = useRef(null);
+
   // Render the reveal mask gradient trail onto the CSS variable
   const updateReveal = useCallback(() => {
     if (!portraitRef.current) return;
@@ -46,7 +48,7 @@ const HeroPortrait = () => {
       );
 
       // Continue animation loop as long as points exist or pointer is active
-      animationRef.current = requestAnimationFrame(updateReveal);
+      animationRef.current = requestAnimationFrame(() => updateRevealRef.current?.());
     } else {
       portraitRef.current.style.setProperty('--reveal-mask', 'none');
       if (animationRef.current) {
@@ -55,6 +57,10 @@ const HeroPortrait = () => {
       }
     }
   }, []);
+
+  useEffect(() => {
+    updateRevealRef.current = updateReveal;
+  }, [updateReveal]);
 
   const addPointFromEvent = useCallback((e) => {
     if (!portraitRef.current) return;
@@ -85,9 +91,9 @@ const HeroPortrait = () => {
     }
 
     if (!animationRef.current) {
-      animationRef.current = requestAnimationFrame(updateReveal);
+      animationRef.current = requestAnimationFrame(() => updateRevealRef.current?.());
     }
-  }, [updateReveal]);
+  }, []);
 
   // Unified Pointer Event Handlers
   const handlePointerEnter = useCallback((e) => {

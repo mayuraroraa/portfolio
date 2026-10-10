@@ -13,6 +13,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Work', path: '/work', count: '4' },
     { name: 'Services', path: '/services', count: '2' },
+    { name: 'Skills', path: '/skills' },
     { name: 'About', path: '/about' }
   ];
 
@@ -25,20 +26,21 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="navbar-links">
+      <nav className="navbar-links" aria-label="Main Navigation">
         {navLinks.map((link) => (
           <Link
             key={link.name}
             href={link.path}
             className={`nav-link ${pathname === link.path ? 'active' : ''}`}
           >
-            {link.name} {link.count && <span className="nav-count">[{link.count}]</span>}
+            <span className="nav-title">{link.name}</span>
+            {link.count && <span className="nav-count">[{link.count}]</span>}
           </Link>
         ))}
       </nav>
 
       <div className="navbar-action">
-        <Link href="/contact" className="pill-btn pill-btn-dark">
+        <Link href="/contact" className="pill-btn pill-btn-dark nav-contact-btn">
           Contact Us <ArrowUpRight size={14} />
         </Link>
       </div>

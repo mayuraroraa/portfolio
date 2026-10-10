@@ -50,13 +50,15 @@
   gap: 1.5rem;
 }
 
-label {
+.contact-form label {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-input, select, textarea {
+.contact-form input, 
+.contact-form select, 
+.contact-form textarea {
   width: 100%;
   padding: 1rem;
   border: 1px solid var(--border-color);
@@ -68,7 +70,15 @@ input, select, textarea {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:focus, select:focus, textarea:focus {
+.contact-form input::placeholder, 
+.contact-form textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+.contact-form input:focus, 
+.contact-form select:focus, 
+.contact-form textarea:focus {
   outline: none;
   border-color: var(--text-primary);
   background: white;
@@ -97,11 +107,35 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 768px) {
+  .contact-container {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+  .contact-header {
+    margin-bottom: 2.5rem;
+  }
   .form-row {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   .contact-form-wrapper {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-wrapper {
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius-md);
+  }
+  .contact-subtitle {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 0.85rem;
+    font-size: 0.9375rem;
   }
 }

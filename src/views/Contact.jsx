@@ -18,6 +18,8 @@ const Contact = ({ className = '' }) => {
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
   const [whatsappUrl, setWhatsappUrl] = useState('');
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -25,6 +27,7 @@ const Contact = ({ className = '' }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
+    setErrorMessage('');
 
     // Build the WhatsApp message URL synchronously
     const whatsappMessage = 
@@ -38,28 +41,15 @@ const Contact = ({ className = '' }) => {
     const waUrl = `https://wa.me/918360825752?text=${encodeURIComponent(whatsappMessage)}`;
     setWhatsappUrl(waUrl);
 
-    // To prevent browser popup blockers, prepare the tab before the async request
-    let newTab = null;
-    const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (!isMobile && typeof window !== 'undefined') {
-      newTab = window.open('about:blank', '_blank');
-    }
-
     try {
-      await contactService.submitInquiry(formData);
-
-      // Open WhatsApp
-      if (newTab) {
-        newTab.location.href = waUrl;
-      } else if (isMobile && typeof window !== 'undefined') {
-        window.location.href = waUrl;
-      }
+      const res = await contactService.submitInquiry(formData);
+      if (res.whatsappUrl) setWhatsappUrl(res.whatsappUrl);
 
       setStatus('success');
       setFormData({ name: '', email: '', projectType: 'Not sure yet', budget: 'Not sure yet', message: '' });
     } catch (error) {
       console.error(error);
-      if (newTab) newTab.close();
+      setErrorMessage(error.message || 'Something went wrong. Please check your fields and try again.');
       setStatus('error');
     }
   };
@@ -153,7 +143,7 @@ const Contact = ({ className = '' }) => {
             </div>
             
             {status === 'error' && (
-              <div className="error-message">Something went wrong. Please check your fields and try again.</div>
+              <div className="error-message">{errorMessage || 'Something went wrong. Please check your fields and try again.'}</div>
             )}
 
             <button type="submit" className="pill-btn pill-btn-dark submit-btn" disabled={status === 'loading'}>
