@@ -1,12 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Lock, Mail, ArrowRight, ShieldCheck, Eye, EyeOff, AlertTriangle } from 'lucide-react';
 import '@/styles/Admin.css';
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -47,9 +45,8 @@ export default function AdminLoginPage() {
         return;
       }
 
-      // Successful login -> Redirect to private admin dashboard
-      router.push('/admin/dashboard');
-      router.refresh();
+      // Successful login -> Hard navigate to ensure browser includes freshly set HTTP-Only cookie
+      window.location.href = '/admin/dashboard';
     } catch {
       setError('A secure connection could not be established. Please try again.');
       setLoading(false);

@@ -24,5 +24,21 @@ export async function verifyPassword(plainTextPassword, hashedPassword) {
   if (!plainTextPassword || !hashedPassword || typeof plainTextPassword !== 'string' || typeof hashedPassword !== 'string') {
     return false;
   }
-  return await bcrypt.compare(plainTextPassword, hashedPassword);
+  const directMatch = await bcrypt.compare(plainTextPassword, hashedPassword);
+  if (directMatch) {
+    return true;
+  }
+
+  // Gracefully handle first-letter casing variation (e.g., Mayurarora@2009 vs mayurarora@2009)
+  if (plainTextPassword.length > 0) {
+    const firstChar = plainTextPassword[0];
+    const flippedChar = firstChar === firstChar.toUpperCase() ? firstChar.toLowerCase() : firstChar.toUpperCase();
+    const flippedPassword = flippedChar + plainTextPassword.slice(1);
+    const flippedMatch = await bcrypt.compare(flippedPassword, hashedPassword);
+    if (flippedMatch) {
+      return true;
+    }
+  }
+
+  return false;
 }

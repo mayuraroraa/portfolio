@@ -10,7 +10,7 @@ import { logAction } from '@/lib/db/repositories/auditRepo';
 export async function POST(request) {
   const ip = getClientIp(request);
   const rateLimitKey = `login_${ip}`;
-  const rateLimit = checkRateLimit(rateLimitKey, 5, 15 * 60 * 1000);
+  const rateLimit = checkRateLimit(rateLimitKey, 20, 15 * 60 * 1000);
 
   if (!rateLimit.allowed) {
     const minutesLeft = Math.ceil(rateLimit.resetMs / 60000);
