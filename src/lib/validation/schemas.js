@@ -61,7 +61,8 @@ export const contactSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   projectType: z.string().default('Not sure yet'),
   budget: z.string().default('Not sure yet'),
-  message: z.string().min(10, 'Message must be at least 10 characters').max(2000)
+  message: z.string().min(10, 'Message must be at least 10 characters').max(2000),
+  honeypot: z.string().optional()
 });
 
 export const profileSettingsSchema = z.object({

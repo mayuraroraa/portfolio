@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Lock } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import { skillsData } from '@/data/skills';
 import heroImage from '@/assets/9fa1e3b5-358d-4b14-92bb-e1ac5b273116.png';
@@ -41,9 +41,6 @@ const About = ({ className = '', settings = null }) => {
           <div className="about-actions-row">
             <Link href="/skills" className="pill-btn pill-btn-dark">
               Explore Technical Capabilities <ArrowUpRight size={16} />
-            </Link>
-            <Link href="/admin/login" className="pill-btn pill-btn-outline admin-login-btn">
-              <Lock size={15} /> Admin Login
             </Link>
           </div>
         </ScrollReveal>

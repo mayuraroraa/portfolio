@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
 const SESSION_COOKIE_NAME = 'mayur_admin_session';
@@ -7,10 +8,8 @@ const key = new TextEncoder().encode(JWT_SECRET);
 
 /**
  * Validates the JWT session cookie using jose on Edge / Server runtime.
- * @param {string|undefined} token 
- * @returns {Promise<boolean>}
  */
-async function hasValidSession(token) {
+async function hasValidSession(token: string | undefined): Promise<boolean> {
   if (!token || typeof token !== 'string') return false;
   try {
     const { payload } = await jwtVerify(token, key, {
@@ -24,10 +23,8 @@ async function hasValidSession(token) {
 
 /**
  * Applies security headers to an outgoing response.
- * @param {NextResponse} response 
- * @returns {NextResponse}
  */
-function applySecurityHeaders(response) {
+function applySecurityHeaders(response: NextResponse): NextResponse {
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -40,9 +37,12 @@ function applySecurityHeaders(response) {
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: blob: https:",
     "connect-src 'self' https:",
-    "frame-ancestors 'none'"
+    "frame-ancestors 'none'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'"
   ].join('; ');
-  response.headers.set('Content-Security-Policy', csp);
+  response.headers.set('Content-Security-Policy-Report-Only', csp);
 
   if (process.env.NODE_ENV === 'production') {
     response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
@@ -51,7 +51,7 @@ function applySecurityHeaders(response) {
   return response;
 }
 
-export async function middleware(request) {
+export async function middleware(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
   const sessionToken = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   const isAuthenticated = await hasValidSession(sessionToken);
@@ -72,7 +72,22 @@ export async function middleware(request) {
     return applySecurityHeaders(NextResponse.next());
   }
 
-  // 3. Protected admin routes (/admin/dashboard, /admin/projects, /admin/settings, etc.)
+  // 3. Protected admin API routes (/api/admin/...)
+  if (pathname.startsWith('/api/admin')) {
+    // Whitelist login route so credentials can be posted
+    if (pathname === '/api/admin/auth/login') {
+      return applySecurityHeaders(NextResponse.next());
+    }
+
+    if (!isAuthenticated) {
+      return applySecurityHeaders(
+        NextResponse.json({ error: 'Unauthorized: Valid administrator session required.' }, { status: 401 })
+      );
+    }
+    return applySecurityHeaders(NextResponse.next());
+  }
+
+  // 4. Protected admin pages (/admin/dashboard, /admin/projects, /admin/settings, etc.)
   if (pathname.startsWith('/admin')) {
     if (!isAuthenticated) {
       const loginUrl = new URL('/admin/login', request.url);
@@ -85,6 +100,7 @@ export async function middleware(request) {
 
 export const config = {
   matcher: [
-    '/admin/:path*'
+    '/admin/:path*',
+    '/api/admin/:path*'
   ]
 };

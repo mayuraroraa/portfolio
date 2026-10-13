@@ -8,6 +8,7 @@ const options = {
   minPoolSize: 1,
   serverSelectionTimeoutMS: 5000,
   connectTimeoutMS: 10000,
+  tls: true,
 };
 
 async function createConnectedClient() {

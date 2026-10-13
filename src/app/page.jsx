@@ -4,6 +4,7 @@ import HomeHero from '@/components/hero/HomeHero';
 import Work from '@/views/Work';
 import Services from '@/views/Services';
 import AboutPreview from '@/components/AboutPreview';
+import Contact from '@/views/Contact';
 import { getPublishedProjects } from '@/lib/db/repositories/projectsRepo';
 import { getPublishedServices } from '@/lib/db/repositories/servicesRepo';
 import { getSiteSettings } from '@/lib/db/repositories/settingsRepo';
@@ -22,6 +23,7 @@ export default async function HomePage() {
         <Work className="home" items={projects} />
         <Services className="home" items={services} />
         <AboutPreview className="home" settings={settings} />
+        <Contact className="home" />
       </div>
     </PageTransition>
   );

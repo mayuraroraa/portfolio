@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Lock } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import heroImage from '@/assets/9fa1e3b5-358d-4b14-92bb-e1ac5b273116.png';
 import './AboutPreview.css';
@@ -23,9 +23,6 @@ const AboutPreview = () => {
             <div className="about-preview-actions">
               <Link href="/about" className="pill-btn pill-btn-light">
                 View Full Profile <ArrowRight size={16} />
-              </Link>
-              <Link href="/admin/login" className="pill-btn pill-btn-outline admin-preview-login-btn">
-                <Lock size={15} /> Admin Login
               </Link>
             </div>
           </div>

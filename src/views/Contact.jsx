@@ -12,7 +12,8 @@ const Contact = ({ className = '' }) => {
     email: '',
     projectType: 'Not sure yet',
     budget: 'Not sure yet',
-    message: ''
+    message: '',
+    honeypot: ''
   });
 
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
@@ -29,24 +30,14 @@ const Contact = ({ className = '' }) => {
     setStatus('loading');
     setErrorMessage('');
 
-    // Build the WhatsApp message URL synchronously
-    const whatsappMessage = 
-      `*New Project Inquiry from Portfolio*\n\n` +
-      `👤 *Name:* ${formData.name}\n` +
-      `📧 *Email:* ${formData.email}\n` +
-      `🛠 *Project Type:* ${formData.projectType}\n` +
-      `💰 *Budget Range:* ${formData.budget}\n\n` +
-      `📝 *Message:*\n${formData.message}`;
-
-    const waUrl = `https://wa.me/918360825752?text=${encodeURIComponent(whatsappMessage)}`;
-    setWhatsappUrl(waUrl);
-
     try {
       const res = await contactService.submitInquiry(formData);
-      if (res.whatsappUrl) setWhatsappUrl(res.whatsappUrl);
+      if (res && res.whatsappUrl) {
+        setWhatsappUrl(res.whatsappUrl);
+      }
 
       setStatus('success');
-      setFormData({ name: '', email: '', projectType: 'Not sure yet', budget: 'Not sure yet', message: '' });
+      setFormData({ name: '', email: '', projectType: 'Not sure yet', budget: 'Not sure yet', message: '', honeypot: '' });
     } catch (error) {
       console.error(error);
       setErrorMessage(error.message || 'Something went wrong. Please check your fields and try again.');
@@ -102,6 +93,31 @@ const Contact = ({ className = '' }) => {
           </div>
         ) : (
           <form className="contact-form" onSubmit={handleSubmit}>
+            {/* Anti-spam Honeypot Field (hidden from genuine users) */}
+            <div
+              style={{
+                position: 'absolute',
+                left: '-9999px',
+                width: '1px',
+                height: '1px',
+                opacity: 0,
+                pointerEvents: 'none',
+                overflow: 'hidden'
+              }}
+              aria-hidden="true"
+            >
+              <label htmlFor="hp_comment">Leave this empty</label>
+              <input
+                type="text"
+                id="hp_comment"
+                name="honeypot"
+                value={formData.honeypot}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" />

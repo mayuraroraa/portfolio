@@ -17,6 +17,16 @@ export async function POST(request) {
 
   try {
     const body = await request.json();
+
+    // Anti-spam Honeypot Check: if hidden field is filled, silently discard spam
+    if (body.honeypot || body.website) {
+      return NextResponse.json({
+        success: true,
+        messageId: 'honeypot_filtered',
+        whatsappUrl: null
+      });
+    }
+
     const parsed = contactSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -37,7 +47,8 @@ export async function POST(request) {
       ip
     });
 
-    // 2. Format WhatsApp fallback URL
+    // 2. Format WhatsApp fallback URL using environment variables
+    const whatsappNumber = (process.env.WHATSAPP_NUMBER || '918360825752').replace(/\D/g, '');
     const whatsappMessage = 
       `*New Project Inquiry from Portfolio*\n\n` +
       `👤 *Name:* ${name}\n` +
@@ -46,11 +57,12 @@ export async function POST(request) {
       `💰 *Budget Range:* ${budget}\n\n` +
       `📝 *Message:*\n${message}`;
 
-    const whatsappUrl = `https://wa.me/918360825752?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-    // 3. Optional async forward to FormSubmit for instant email notifications
+    // 3. Optional async forward to FormSubmit for instant email notifications using environment variable
+    const targetEmail = process.env.CONTACT_EMAIL || 'contact@mayurarora.dev';
     try {
-      fetch("https://formsubmit.co/ajax/mayuraroraa@gmail.com", {
+      fetch(`https://formsubmit.co/ajax/${encodeURIComponent(targetEmail)}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
