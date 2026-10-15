@@ -39,9 +39,9 @@ const About = ({ className = '', settings = null }) => {
           </div>
 
           <div className="about-actions-row">
-            <Link href="/skills" className="pill-btn pill-btn-dark">
+            <a href="#skills" className="pill-btn pill-btn-dark">
               Explore Technical Capabilities <ArrowUpRight size={16} />
-            </Link>
+            </a>
           </div>
         </ScrollReveal>
 
@@ -53,7 +53,7 @@ const About = ({ className = '', settings = null }) => {
       </div>
 
       <ScrollReveal yOffset={40} delay={0.2}>
-        <div className="skills-section">
+        <div id="skills" className="skills-section">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
             <h2 className="skills-heading" style={{ margin: 0 }}>Core Technologies Preview</h2>
             <Link href="/skills" style={{ fontSize: '0.875rem', fontWeight: '700', color: 'var(--accent-deep)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
