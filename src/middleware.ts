@@ -42,7 +42,7 @@ function applySecurityHeaders(response: NextResponse): NextResponse {
     "base-uri 'self'",
     "form-action 'self'"
   ].join('; ');
-  response.headers.set('Content-Security-Policy', csp);
+  response.headers.set('Content-Security-Policy-Report-Only', csp);
   response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
 
   return response;

@@ -30,7 +30,7 @@ const Services = ({ className = '', items = null }) => {
   }, [activeModalService]);
 
   return (
-    <div id="services" className={`services-container container ${className}`.trim()}>
+    <section id="services" className={`services-container container ${className}`.trim()}>
       <span id="skills" aria-hidden="true" style={{ position: 'relative', top: '-20px' }}></span>
 
       <ScrollReveal yOffset={20}>
@@ -195,7 +195,7 @@ const Services = ({ className = '', items = null }) => {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
