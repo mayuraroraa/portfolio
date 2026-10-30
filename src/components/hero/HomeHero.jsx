@@ -16,17 +16,29 @@ const HomeHero = ({ className = '', settings = null }) => {
   const configuredWhatsapp = settings?.socialLinks?.whatsapp;
   const instagramUrl = settings?.socialLinks?.instagram || 'https://www.instagram.com/mayurraroraa/';
 
-  const rawEmail = configuredEmail && configuredEmail.includes('@') 
-    ? configuredEmail 
-    : 'mayuraroraa@gmail.com';
-  const mailHref = `mailto:${rawEmail}`;
+  const handleMailClick = (e) => {
+    e.preventDefault();
+    if (configuredEmail && configuredEmail.includes('@')) {
+      const [u, d] = configuredEmail.split('@');
+      window.location.href = `mailto:${u}@${d}`;
+    } else {
+      const user = 'mayuraroraa';
+      const host = 'gmail.com';
+      window.location.href = `mailto:${user}@${host}`;
+    }
+  };
 
-  const cleanWhatsappDigits = configuredWhatsapp 
-    ? configuredWhatsapp.replace(/\D/g, '') 
-    : '918360825752';
-  const whatsappHref = configuredWhatsapp && configuredWhatsapp.startsWith('http')
-    ? configuredWhatsapp
-    : `https://wa.me/${cleanWhatsappDigits}`;
+  const handleWhatsappClick = (e) => {
+    e.preventDefault();
+    if (configuredWhatsapp) {
+      const digits = configuredWhatsapp.replace(/\D/g, '');
+      window.open(`https://wa.me/${digits}`, '_blank', 'noopener,noreferrer');
+    } else {
+      const country = '91';
+      const phone = '8360825752';
+      window.open(`https://wa.me/+${country}${phone}`, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <div id="home" className={`home-container container ${className}`.trim()}>
@@ -80,9 +92,8 @@ const HomeHero = ({ className = '', settings = null }) => {
 
           <div className="hero-socials">
             <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
+              onClick={handleWhatsappClick}
               className="pill-btn pill-btn-outline"
               title="Connect via WhatsApp"
             >
@@ -90,7 +101,8 @@ const HomeHero = ({ className = '', settings = null }) => {
             </a>
 
             <a
-              href={mailHref}
+              href="#contact"
+              onClick={handleMailClick}
               className="pill-btn pill-btn-outline"
               title="Send an Email"
             >
