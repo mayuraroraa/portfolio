@@ -8,7 +8,7 @@ import { skillsData } from '@/data/skills';
 import heroImage from '@/assets/9fa1e3b5-358d-4b14-92bb-e1ac5b273116.png';
 import '@/styles/About.css';
 
-const About = ({ className = '', settings = null }) => {
+const About = ({ className = '', settings = null, skills = null, categories = null }) => {
   const subtitle = settings?.aboutSubtitle || 'I build ideas from the interface to the infrastructure.';
   const bioParagraphs = settings?.aboutBioParagraphs && settings.aboutBioParagraphs.length > 0 
     ? settings.aboutBioParagraphs 
@@ -17,6 +17,18 @@ const About = ({ className = '', settings = null }) => {
         'From writing interfaces and building backends to experimenting with AI and visual storytelling, I’m constantly turning things I learn into things I can actually build.',
         "The goal isn't to just become a developer. It’s to become a builder."
       ];
+
+  const displayCategories = React.useMemo(() => {
+    if (categories && categories.length > 0 && skills && skills.length > 0) {
+      return categories.map(cat => ({
+        category: cat.name,
+        skills: skills
+          .filter(s => s.categoryId === (cat._id || cat.id) || s.category === cat.name)
+          .map(s => s.name)
+      })).filter(cat => cat.skills.length > 0);
+    }
+    return skillsData;
+  }, [categories, skills]);
 
   return (
     <div id="about" className={`about-container container ${className}`.trim()}>
@@ -62,7 +74,7 @@ const About = ({ className = '', settings = null }) => {
           </div>
 
           <div className="skills-grid">
-            {skillsData.map((category, index) => (
+            {displayCategories.map((category, index) => (
               <div key={index} className="skill-category">
                 <h3 className="skill-category-title">{category.category}</h3>
                 <ul className="skill-list">

@@ -1,8 +1,3 @@
-import goldenEarthImg from '../assets/golden-earth-school/assets/images/Gemini_Generated_Image_zc9rrazc9rrazc9r - Removed.png';
-import hunarImg from '../assets/hunarproject/imgs/assets/hero-image.jpg';
-import soloLevelingImg from '../assets/solo-leveling-todolist/solo-leveling-mockup.png';
-import spotifyImg from '../assets/spotify files/images/Screenshot 3.png';
-
 export const projectsData = [
   {
     id: 'golden-earth',
@@ -11,7 +6,7 @@ export const projectsData = [
     category: 'Web Development',
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
-    image: goldenEarthImg,
+    image: '/assets/golden-earth-school/assets/images/Gemini_Generated_Image_zc9rrazc9rrazc9r - Removed.png',
     liveUrl: '/assets/golden-earth-school/index.html',
     githubUrl: '#',
     featured: true
@@ -23,7 +18,7 @@ export const projectsData = [
     category: 'Web Design',
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
-    image: hunarImg,
+    image: '/assets/hunarproject/imgs/assets/hero-image.jpg',
     liveUrl: '/assets/hunarproject/hunarproject.html',
     githubUrl: '#',
     featured: true
@@ -35,7 +30,7 @@ export const projectsData = [
     category: 'Web Application',
     year: '2024',
     technologies: ['React', 'Vite', 'CSS'],
-    image: soloLevelingImg,
+    image: '/assets/solo-leveling-todolist/solo-leveling-mockup.png',
     liveUrl: '#',
     githubUrl: '#',
     featured: true
@@ -47,7 +42,7 @@ export const projectsData = [
     category: 'Web Development',
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
-    image: spotifyImg,
+    image: '/assets/spotify files/images/Screenshot 3.png',
     liveUrl: '/assets/spotify files/index.html',
     githubUrl: '#',
     featured: true

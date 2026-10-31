@@ -2,8 +2,22 @@ import { SignJWT, jwtVerify } from 'jose';
 import crypto from 'crypto';
 
 const SESSION_COOKIE_NAME = 'mayur_admin_session';
-const JWT_SECRET = process.env.JWT_SECRET || 'dev_mayur_antigravity_jwt_secret_key_849204928472910_min32chars';
-const key = new TextEncoder().encode(JWT_SECRET);
+const isProduction = process.env.NODE_ENV === 'production';
+
+function getJwtSecret() {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    if (isProduction) {
+      throw new Error('CRITICAL SECURITY ERROR: JWT_SECRET environment variable is required in production.');
+    }
+    return 'dev_mayur_antigravity_jwt_secret_key_849204928472910_min32chars';
+  }
+  return secret;
+}
+
+function getJwtKey() {
+  return new TextEncoder().encode(getJwtSecret());
+}
 
 export const COOKIE_CONFIG = {
   name: SESSION_COOKIE_NAME,
@@ -22,6 +36,7 @@ export const COOKIE_CONFIG = {
  * @returns {Promise<string>}
  */
 export async function createSessionToken(payload) {
+  const key = getJwtKey();
   const sessionId = payload.sessionId || crypto.randomUUID();
   return await new SignJWT({
     email: payload.email.toLowerCase().trim(),
@@ -43,6 +58,7 @@ export async function createSessionToken(payload) {
 export async function verifySessionToken(token) {
   if (!token || typeof token !== 'string') return null;
   try {
+    const key = getJwtKey();
     const { payload } = await jwtVerify(token, key, {
       algorithms: ['HS256']
     });
