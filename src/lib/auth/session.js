@@ -4,12 +4,23 @@ import crypto from 'crypto';
 const SESSION_COOKIE_NAME = 'mayur_admin_session';
 
 // Strict security enforcement: In production, JWT_SECRET MUST be set to prevent token forgery
-if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
-  throw new Error('FATAL: JWT_SECRET environment variable is missing in production. Configure a strong secret (min 32 chars).');
+if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32)) {
+  throw new Error('FATAL: JWT_SECRET environment variable is missing or shorter than 32 characters in production.');
 }
 
 const JWT_SECRET = process.env.JWT_SECRET || 'dev_mayur_antigravity_jwt_secret_key_849204928472910_min32chars';
 const key = new TextEncoder().encode(JWT_SECRET);
+
+function getSigningKey() {
+  if (process.env.NODE_ENV === 'production') {
+    const prodSecret = process.env.JWT_SECRET;
+    if (!prodSecret || prodSecret.length < 32) {
+      throw new Error('FATAL: In production, JWT_SECRET must be configured and contain at least 32 characters.');
+    }
+    return new TextEncoder().encode(prodSecret);
+  }
+  return key;
+}
 
 export const COOKIE_CONFIG = {
   name: SESSION_COOKIE_NAME,
@@ -28,6 +39,7 @@ export const COOKIE_CONFIG = {
  * @returns {Promise<string>}
  */
 export async function createSessionToken(payload) {
+  const signingKey = getSigningKey();
   const sessionId = payload.sessionId || crypto.randomUUID();
   return await new SignJWT({
     email: payload.email.toLowerCase().trim(),
@@ -38,7 +50,7 @@ export async function createSessionToken(payload) {
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
     .setExpirationTime('7d')
-    .sign(key);
+    .sign(signingKey);
 }
 
 /**
@@ -49,7 +61,8 @@ export async function createSessionToken(payload) {
 export async function verifySessionToken(token) {
   if (!token || typeof token !== 'string') return null;
   try {
-    const { payload } = await jwtVerify(token, key, {
+    const verificationKey = getSigningKey();
+    const { payload } = await jwtVerify(token, verificationKey, {
       algorithms: ['HS256']
     });
     if (!payload?.email) {

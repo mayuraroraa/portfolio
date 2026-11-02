@@ -18,15 +18,17 @@ const About = ({ className = '', settings = null, skills = null, categories = nu
         "The goal isn't to just become a developer. It’s to become a builder."
       ];
 
-  // Dynamic skills from CMS via props, gracefully falling back to static skillsData
-  const displayCategories = (categories && categories.length > 0 && skills && skills.length > 0)
+  // Dynamically group published skills by category from skillsRepo; fallback to static data
+  const dynamicCategories = categories && categories.length > 0 && skills && skills.length > 0
     ? categories.map(cat => ({
         category: cat.name,
         skills: skills
-          .filter(s => s.categoryId === cat.id || s.categoryId === cat._id?.toString() || s.categoryId === cat.slug)
+          .filter(s => s.categoryId === (cat._id || cat.id) || s.category === cat.name)
           .map(s => s.name)
-      })).filter(c => c.skills.length > 0)
+      })).filter(cat => cat.skills.length > 0)
     : skillsData;
+
+  const displayCategories = dynamicCategories.length > 0 ? dynamicCategories : skillsData;
 
   return (
     <div id="about" className={`about-container container ${className}`.trim()}>
