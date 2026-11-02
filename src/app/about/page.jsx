@@ -2,7 +2,6 @@ import React from 'react';
 import PageTransition from '@/components/PageTransition';
 import About from '@/views/About';
 import { getSiteSettings } from '@/lib/db/repositories/settingsRepo';
-import { getPublishedSkills, getPublishedCategories } from '@/lib/db/repositories/skillsRepo';
 
 export const metadata = {
   title: 'About | Mayur Arora',
@@ -10,15 +9,11 @@ export const metadata = {
 };
 
 export default async function AboutPage() {
-  const [settings, skills, categories] = await Promise.all([
-    getSiteSettings(),
-    getPublishedSkills(),
-    getPublishedCategories()
-  ]);
+  const settings = await getSiteSettings();
 
   return (
     <PageTransition>
-      <About settings={settings} skills={skills} categories={categories} />
+      <About settings={settings} />
     </PageTransition>
   );
 }

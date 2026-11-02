@@ -11,7 +11,8 @@
     "seed": "node scripts/seed.js",
     "bootstrap:admin": "node scripts/bootstrap-admin.js",
     "reset:admin": "node scripts/reset-admin.js",
-    "test:security": "node scripts/test-security.js"
+    "test:security": "node scripts/test-security.js",
+    "test:e2e": "node scripts/test-cms-e2e.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -23,7 +24,6 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-intersection-observer": "^11.0.1",
-    "react-router-dom": "^7.18.4",
     "zod": "^4.6.5"
   },
   "devDependencies": {

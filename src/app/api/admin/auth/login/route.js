@@ -3,14 +3,14 @@ import { cookies } from 'next/headers';
 import { findAdminByEmail, updateLastLogin } from '@/lib/db/repositories/adminUsersRepo';
 import { verifyPassword } from '@/lib/auth/password';
 import { createSessionToken, COOKIE_CONFIG } from '@/lib/auth/session';
-import { checkRateLimit, clearRateLimit, getClientIp } from '@/lib/security/rateLimit';
+import { checkDistributedRateLimit, clearDistributedRateLimit, getClientIp } from '@/lib/security/rateLimit';
 import { loginSchema } from '@/lib/validation/schemas';
 import { logAction } from '@/lib/db/repositories/auditRepo';
 
 export async function POST(request) {
   const ip = getClientIp(request);
   const rateLimitKey = `login_${ip}`;
-  const rateLimit = checkRateLimit(rateLimitKey, 20, 15 * 60 * 1000);
+  const rateLimit = await checkDistributedRateLimit(rateLimitKey, 20, 15 * 60 * 1000);
 
   if (!rateLimit.allowed) {
     const minutesLeft = Math.ceil(rateLimit.resetMs / 60000);
@@ -62,8 +62,8 @@ export async function POST(request) {
       );
     }
 
-    // Credentials verified: reset rate limit attempts for this IP
-    clearRateLimit(rateLimitKey);
+    // Credentials verified: reset rate limit attempts for this IP across distributed clusters
+    await clearDistributedRateLimit(rateLimitKey);
 
     // Generate fresh session token to prevent session fixation
     const token = await createSessionToken({

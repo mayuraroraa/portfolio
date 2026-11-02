@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { requireAdminSession } from '@/lib/auth/session';
 import { deleteMediaAsset } from '@/lib/db/repositories/mediaRepo';
 import { logAction } from '@/lib/db/repositories/auditRepo';
+import { deleteMediaFile } from '@/lib/storage/mediaStorage';
 
 export async function DELETE(request, { params }) {
   try {
@@ -13,6 +14,13 @@ export async function DELETE(request, { params }) {
     if (!deleted) {
       return NextResponse.json({ error: 'Asset not found' }, { status: 404 });
     }
+
+    // Clean up physical file from storage provider (Cloudinary or local)
+    await deleteMediaFile({
+      provider: deleted.provider,
+      publicId: deleted.publicId,
+      filename: deleted.filename
+    });
 
     await logAction({
       actorEmail: session.email,

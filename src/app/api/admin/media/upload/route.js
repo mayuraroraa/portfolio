@@ -2,8 +2,7 @@ import { NextResponse } from 'next/server';
 import { requireAdminSession } from '@/lib/auth/session';
 import { saveMediaAsset } from '@/lib/db/repositories/mediaRepo';
 import { logAction } from '@/lib/db/repositories/auditRepo';
-import path from 'path';
-import fs from 'fs/promises';
+import { uploadMediaFile } from '@/lib/storage/mediaStorage';
 
 const ALLOWED_MIME_TYPES = [
   'image/jpeg',
@@ -42,25 +41,21 @@ export async function POST(request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Sanitize filename and create unique timestamped name
-    const ext = path.extname(file.name) || '.png';
-    const baseName = path.basename(file.name, ext).replace(/[^a-zA-Z0-9_-]/g, '_').toLowerCase();
-    const uniqueFilename = `${baseName}_${Date.now()}${ext}`;
-
-    const uploadDir = path.join(process.cwd(), 'public', 'assets', 'uploads');
-    await fs.mkdir(uploadDir, { recursive: true });
-
-    const filePath = path.join(uploadDir, uniqueFilename);
-    await fs.writeFile(filePath, buffer);
-
-    const publicUrl = `/assets/uploads/${uniqueFilename}`;
+    // Upload via cloud adapter (Cloudinary) with automatic local fallback
+    const uploadResult = await uploadMediaFile({
+      buffer,
+      filename: file.name,
+      mimeType: file.type
+    });
 
     const assetRecord = await saveMediaAsset({
-      filename: uniqueFilename,
-      url: publicUrl,
+      filename: uploadResult.filename,
+      url: uploadResult.url,
+      provider: uploadResult.provider,
+      publicId: uploadResult.publicId,
       mimeType: file.type,
-      fileSize: file.size,
-      altText: altText || baseName,
+      fileSize: uploadResult.fileSize,
+      altText: altText || uploadResult.filename,
       isProtected: false,
       uploadedBy: session.email
     });
@@ -69,8 +64,8 @@ export async function POST(request) {
       actorEmail: session.email,
       action: 'MEDIA_UPLOADED',
       resourceType: 'media_asset',
-      resourceId: assetRecord._id || uniqueFilename,
-      details: { filename: uniqueFilename, size: file.size }
+      resourceId: assetRecord._id || uploadResult.filename,
+      details: { filename: uploadResult.filename, provider: uploadResult.provider, size: file.size }
     });
 
     return NextResponse.json({

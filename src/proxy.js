@@ -4,8 +4,7 @@ import { jwtVerify } from 'jose';
 
 const SESSION_COOKIE_NAME = 'mayur_admin_session';
 
-const isProduction = process.env.NODE_ENV === 'production';
-const JWT_SECRET = process.env.JWT_SECRET || (isProduction ? '' : 'dev_mayur_antigravity_jwt_secret_key_849204928472910_min32chars');
+const JWT_SECRET = process.env.JWT_SECRET;
 
 /**
  * Validates the JWT session cookie.

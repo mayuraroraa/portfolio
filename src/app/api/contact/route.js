@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/validation/schemas';
 import { createMessage } from '@/lib/db/repositories/messagesRepo';
-import { checkRateLimit, getClientIp } from '@/lib/security/rateLimit';
+import { checkDistributedRateLimit, getClientIp } from '@/lib/security/rateLimit';
 
 export async function POST(request) {
   const ip = getClientIp(request);
-  const rateLimit = checkRateLimit(`contact_${ip}`, 5, 60 * 60 * 1000); // 5 per hour
+  const rateLimit = await checkDistributedRateLimit(`contact_${ip}`, 5, 60 * 60 * 1000); // 5 per hour
 
   if (!rateLimit.allowed) {
     const minutesLeft = Math.ceil(rateLimit.resetMs / 60000);

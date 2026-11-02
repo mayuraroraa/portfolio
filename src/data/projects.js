@@ -7,6 +7,7 @@ export const projectsData = [
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
     image: '/assets/golden-earth-school/assets/images/Gemini_Generated_Image_zc9rrazc9rrazc9r - Removed.png',
+    thumbnailUrl: '/assets/golden-earth-school/assets/images/Gemini_Generated_Image_zc9rrazc9rrazc9r - Removed.png',
     liveUrl: '/assets/golden-earth-school/index.html',
     githubUrl: '#',
     featured: true
@@ -19,6 +20,7 @@ export const projectsData = [
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
     image: '/assets/hunarproject/imgs/assets/hero-image.jpg',
+    thumbnailUrl: '/assets/hunarproject/imgs/assets/hero-image.jpg',
     liveUrl: '/assets/hunarproject/hunarproject.html',
     githubUrl: '#',
     featured: true
@@ -31,6 +33,7 @@ export const projectsData = [
     year: '2024',
     technologies: ['React', 'Vite', 'CSS'],
     image: '/assets/solo-leveling-todolist/solo-leveling-mockup.png',
+    thumbnailUrl: '/assets/solo-leveling-todolist/solo-leveling-mockup.png',
     liveUrl: '#',
     githubUrl: '#',
     featured: true
@@ -43,6 +46,7 @@ export const projectsData = [
     year: '2024',
     technologies: ['HTML5', 'CSS3', 'JavaScript'],
     image: '/assets/spotify files/images/Screenshot 3.png',
+    thumbnailUrl: '/assets/spotify files/images/Screenshot 3.png',
     liveUrl: '/assets/spotify files/index.html',
     githubUrl: '#',
     featured: true
