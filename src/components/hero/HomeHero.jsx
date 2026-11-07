@@ -84,7 +84,7 @@ const HomeHero = ({ className = '', settings = null }) => {
             <p className="text-secondary">
               {bioText}
             </p>
-            <a href="#contact" className="pill-btn pill-btn-dark mt-4">
+            <a href="/contact" className="pill-btn pill-btn-dark mt-4">
               Contact Us
               <ArrowUpRight size={16} />
             </a>
@@ -92,7 +92,7 @@ const HomeHero = ({ className = '', settings = null }) => {
 
           <div className="hero-socials">
             <a
-              href="#contact"
+              href="/contact"
               onClick={handleWhatsappClick}
               className="pill-btn pill-btn-outline"
               title="Connect via WhatsApp"
@@ -101,7 +101,7 @@ const HomeHero = ({ className = '', settings = null }) => {
             </a>
 
             <a
-              href="#contact"
+              href="/contact"
               onClick={handleMailClick}
               className="pill-btn pill-btn-outline"
               title="Send an Email"
