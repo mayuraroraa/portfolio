@@ -55,7 +55,7 @@ const Contact = ({ className = '' }) => {
           </div>
           <h1 className="display-large" style={{ textTransform: 'uppercase' }}>HAVE A PROJECT IN MIND?</h1>
           <p className="contact-subtitle">
-            Together, we can create something clear and impactful. Let's collaborate to bring our ideas to life in a way that resonates with everyone.
+            Based in Mullanpur Dakha, Ludhiana, Punjab, India. Available worldwide for freelance full-stack development, MERN stack software contracts, and custom React &amp; Next.js web applications.
           </p>
         </div>
       </ScrollReveal>

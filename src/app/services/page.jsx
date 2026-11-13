@@ -5,8 +5,19 @@ import { getPublishedServices } from '@/lib/db/repositories/servicesRepo';
 import { getPublishedSkills, getPublishedCategories } from '@/lib/db/repositories/skillsRepo';
 
 export const metadata = {
-  title: 'Services & Skills | Mayur Arora',
-  description: 'In-depth overview of services offered by Mayur Arora (Full-Stack Development and Video Editing) along with the complete technical skills, tools, and proficiencies powering each service.',
+  title: 'Hire Full Stack & MERN Developer — Services by Mayur Arora | Ludhiana',
+  description:
+    'Hire Mayur Arora, a full stack developer, software developer, react developer, and MERN stack engineer in Mullanpur Dakha, Ludhiana, Punjab, India. Custom web apps, Next.js solutions, and API engineering.',
+  alternates: {
+    canonical: '/services',
+  },
+  openGraph: {
+    title: 'Hire Full Stack & MERN Developer — Mayur Arora | Mullanpur Dakha, Ludhiana',
+    description:
+      'Professional web development, React / Next.js engineering, and full stack MERN software services in Ludhiana, Punjab, India by Mayur Arora.',
+    url: '/services',
+    images: [{ url: '/assets/hero.png', width: 1200, height: 630, alt: 'Hire Mayur Arora Full Stack Developer' }],
+  },
 };
 
 export default async function ServicesPage({ searchParams }) {

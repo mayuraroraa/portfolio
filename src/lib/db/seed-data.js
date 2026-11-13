@@ -1,16 +1,16 @@
 export const initialSeedData = {
   siteSettings: {
-    siteTitle: 'Mayur Arora | Full-Stack Developer & Builder',
-    siteDescription: '17-year-old full-stack developer building digital products, web applications, and AI experiences that are clear, robust, and highly functional.',
+    siteTitle: 'Mayur Arora — Full-Stack Developer & MERN Developer | Mullanpur Dakha, Ludhiana',
+    siteDescription: 'Full-stack software developer, react developer, next.js developer, and MERN stack engineer based in Mullanpur Dakha, Ludhiana, Punjab, India. Building high-performance web applications and scalable digital solutions.',
     publicContactEmail: 'mayuraroraa@gmail.com',
-    heroRoleTitle: 'Full-Stack Developer',
+    heroRoleTitle: 'Full-Stack & MERN Developer',
     heroHeadline: 'MAYUR ARORA',
-    heroBio: '17-year-old developer building digital products and AI experiences that are clear, robust, and highly functional.',
-    aboutSubtitle: 'I build ideas from the interface to the infrastructure.',
+    heroBio: 'Full-stack software developer and MERN stack engineer based in Mullanpur Dakha, Ludhiana, Punjab. Building high-performance Next.js and React web applications.',
+    aboutSubtitle: 'Full-stack software development, MERN architecture, and digital engineering.',
     aboutBioParagraphs: [
-      'I’m a young full-stack developer exploring technology, AI, creative digital experiences, and entrepreneurship.',
-      'From writing interfaces and building backends to experimenting with AI and visual storytelling, I’m constantly turning things I learn into things I can actually build.',
-      "The goal isn't to just become a developer. It’s to become a builder."
+      'I’m a full-stack developer and software engineer based in Mullanpur Dakha, Ludhiana, Punjab, India, specializing in the MERN stack (MongoDB, Express, React, Node.js) and Next.js.',
+      'From architecting robust backends and clean REST APIs to crafting fluid, responsive interfaces with React, I build end-to-end web applications that perform under real-world demands.',
+      'Whether you need a dedicated software developer, Next.js / React specialist, or a full-stack MERN engineer for your next project, I bring focus, clean code, and fast delivery.'
     ],
     socialLinks: {
       whatsapp: 'https://wa.me/+918360825752',

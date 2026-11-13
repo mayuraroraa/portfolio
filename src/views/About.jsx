@@ -9,13 +9,13 @@ import heroImage from '@/assets/9fa1e3b5-358d-4b14-92bb-e1ac5b273116.png';
 import '@/styles/About.css';
 
 const About = ({ className = '', settings = null, skills = null, categories = null }) => {
-  const subtitle = settings?.aboutSubtitle || 'I build ideas from the interface to the infrastructure.';
+  const subtitle = settings?.aboutSubtitle || 'Full-stack software development, MERN architecture, and digital engineering.';
   const bioParagraphs = settings?.aboutBioParagraphs && settings.aboutBioParagraphs.length > 0 
     ? settings.aboutBioParagraphs 
     : [
-        'I’m a young full-stack developer exploring technology, AI, creative digital experiences, and entrepreneurship.',
-        'From writing interfaces and building backends to experimenting with AI and visual storytelling, I’m constantly turning things I learn into things I can actually build.',
-        "The goal isn't to just become a developer. It’s to become a builder."
+        'I’m a full-stack developer and software engineer based in Mullanpur Dakha, Ludhiana, Punjab, India, specializing in the MERN stack (MongoDB, Express, React, Node.js) and Next.js.',
+        'From writing responsive interfaces and building scalable backends to experimenting with AI and visual storytelling, I turn complex technical challenges into clean, performant web applications.',
+        'Whether you need a dedicated React developer, Next.js developer, or a full-stack MERN software engineer, I build software that performs with clarity and speed.'
       ];
 
   // Dynamically group published skills by category from skillsRepo; fallback to static data

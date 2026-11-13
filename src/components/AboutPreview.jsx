@@ -15,10 +15,10 @@ const AboutPreview = () => {
           <div className="about-preview-content">
             <h2 className="preview-heading">Who am I?</h2>
             <p className="preview-text text-inverse">
-              I am a 17-year-old Class 12 student who is deeply interested in technology, development, AI, and entrepreneurship.
+              I am a full-stack developer and software engineer based in Mullanpur Dakha, Ludhiana, Punjab, India.
             </p>
             <p className="preview-text text-inverse">
-              Alongside school, I am learning full-stack development and building projects to turn what I learn into practical products.
+              Specializing in the MERN stack (MongoDB, Express, React, Node.js) and Next.js, I build high-performance web applications and digital solutions that turn vision into scalable reality.
             </p>
             <div className="about-preview-actions">
               <Link href="/about" className="pill-btn pill-btn-light">
@@ -27,7 +27,7 @@ const AboutPreview = () => {
             </div>
           </div>
           <div className="about-preview-image">
-            <img src={heroImage.src || heroImage} alt="Mayur" className="preview-photo" />
+            <img src={heroImage.src || heroImage} alt="Mayur Arora — Full Stack & MERN Developer in Mullanpur Dakha, Ludhiana" className="preview-photo" />
           </div>
         </div>
       </section>

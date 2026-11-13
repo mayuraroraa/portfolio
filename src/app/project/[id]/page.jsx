@@ -16,11 +16,11 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${project.title} | Mayur Arora`,
-    description: project.shortDescription || project.description,
+    title: `${project.title} — Full Stack Project | Mayur Arora`,
+    description: `${project.shortDescription || project.description} Engineered by Mayur Arora, full stack developer in Mullanpur Dakha, Ludhiana, Punjab.`,
     openGraph: {
-      title: `${project.title} | Mayur Arora`,
-      description: project.shortDescription,
+      title: `${project.title} | Mayur Arora — Full Stack Developer`,
+      description: project.shortDescription || project.description,
       images: [project.thumbnailUrl || '/assets/hero.png'],
     }
   };

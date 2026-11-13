@@ -10,8 +10,8 @@ const HomeHero = ({ className = '', settings = null }) => {
   const firstWord = headlineParts[0] || 'MAYUR';
   const restWords = headlineParts.slice(1).join(' ') || 'ARORA';
 
-  const roleTitle = settings?.heroRoleTitle || 'Full-Stack Developer';
-  const bioText = settings?.heroBio || '17-year-old developer building digital products and AI experiences that are clear, robust, and highly functional.';
+  const roleTitle = settings?.heroRoleTitle || 'Full-Stack & MERN Developer';
+  const bioText = settings?.heroBio || 'Full-stack software developer and MERN stack engineer based in Mullanpur Dakha, Ludhiana, Punjab. Building high-performance Next.js and React web applications.';
   const configuredEmail = settings?.publicContactEmail;
   const configuredWhatsapp = settings?.socialLinks?.whatsapp;
   const instagramUrl = settings?.socialLinks?.instagram || 'https://www.instagram.com/mayurraroraa/';
